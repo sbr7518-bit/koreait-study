@@ -22,6 +22,23 @@ public class Ex13_1_Calc {
 			return sub1-sub2-sub3;
 		}				
 		
+		/** 
+		 * 덧셈을 구하는 서식
+		 * @param numbers
+		 * @return resultSum
+		 */ 
+		public int sum(int[] numbers) {
+			int resultSum = 0;
+			
+			for (int i=0; i < numbers.length; i++) {
+				resultSum += numbers[i];
+			}
+			return resultSum;
+		}
+		
+		
+		
+		
 //			곱셈 메서드 (mul)
 //			 - 매개변수 4개를 받습니다.
 //			 - 4개를 곱한 값을 반홥합니다.
@@ -40,6 +57,12 @@ public class Ex13_1_Calc {
 			System.out.println(div1/div2);
 			return div1 % div2;
 		}
+		
+
+		
+		
+		
+		
 	
 	
 }

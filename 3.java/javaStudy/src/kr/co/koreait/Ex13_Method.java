@@ -15,18 +15,24 @@ public class Ex13_Method {
 	  String result2 = m.printHello("안녕하세요 저는 홍길동입니다.");	
 	  System.out.println(result2);
 	  
+	  System.out.println("============================================");
 	  
+	  int [] numbers = {100, 200, 300, 400};
 	  Ex13_1_Calc calc = new Ex13_1_Calc();
+	  
+	  int sum = calc.sum(numbers);
+	  System.out.println(sum);
 	  
 	  int result1 = calc.add(5, 3); // 5+3
 	  System.out.println(result1);
 	  
+	  
 	  calc.add(10,10); // 10+10
 	  calc.add(20,10); // 20+10
 //           - 인 자 -  = 던지는 건 인자, 불러오는 건 매개변수  	
-	
-	  
-	   int sub = calc.sub(10,5,2);
+		  
+	   int sub = calc.sub(10,5,2); 
+	   
 	   System.out.println(sub);
 	  
 	   int mul = calc.mul(10,5,2,1);
@@ -35,6 +41,17 @@ public class Ex13_Method {
 	   int div = calc.div(10,5);
 	   System.out.println(div);
 	   
+	   System.out.println("==============================");
+	   
+	   Ex13_3_BankAccount bank = new Ex13_3_BankAccount(); 
+	   
+	   bank.deposit(10000);
+	   bank.withdraw(3500);
+	   String check = bank.checkBalance();
+	   System.out.println(check);
+	  
+	   
+	   	   
 	}	
 	
 //	안녕하세요 출력하는 메서드
