@@ -47,7 +47,7 @@ public class Ex18_1_Buy {
 //			  	  	"남은 금액은 0000원 입니다."
 				} else {
 					balance = amount;
-					System.out.println("모니터를 구매하셨습니다.");
+					System.out.println("모니터를 구입하셨습니다.");
 					System.out.println("남은 금액은 " + balance + "원 입니다.");
 				}
 			}
@@ -62,7 +62,7 @@ public class Ex18_1_Buy {
 					System.out.println("소지금이 부족합니다.");
 				} else {
 					balance = amount;
-					System.out.println("마우스를 구매하셨습니다.");
+					System.out.println("마우스를 구입하셨습니다.");
 					System.out.println("남은 금액은 " + balance + "원 입니다.");
 				}
 			}
@@ -72,7 +72,7 @@ public class Ex18_1_Buy {
 					System.out.println("소지금이 부족합니다.");
 				} else {
 					balance = amount;
-					System.out.println("데스크탑을 구매하셨습니다.");
+					System.out.println("데스크탑을 구입하셨습니다.");
 					System.out.println("남은 금액은 " + balance + "원 입니다.");
 				}
 			}
@@ -81,8 +81,8 @@ public class Ex18_1_Buy {
 //		   - 메서드 이름 : getBalance
 //		   - 소지금을 반환합니다. 		 
 			
-			public String getBalance(int balance) {
-				return balance + "남은 잔액입니다.";
+			public int getBalance() {
+				return balance;
 			}
 
 
