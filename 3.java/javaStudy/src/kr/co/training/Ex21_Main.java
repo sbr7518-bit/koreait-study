@@ -28,13 +28,11 @@ public class Ex21_Main {
 		ca.setDex(10);
 		ca.setKnowledge(10);
 		
+		
 //		소서리스 객체
 		Ex21_3_Sorceress sor = new Ex21_3_Sorceress(ca);
-		sor.walk();
 		sor.attack(ca);
-		
-		
-		
+		System.out.println(ca.getExp());
 		
 	}
 
