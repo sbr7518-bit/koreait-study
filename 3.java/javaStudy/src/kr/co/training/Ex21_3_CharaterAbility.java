@@ -2,7 +2,9 @@ package kr.co.training;
 
 public class Ex21_3_CharaterAbility {
 	
-// 아래의 필드를 가집니다.
+//	속성(능력) 메서드 
+	
+// 아래의 필드(속성)를 가집니다.
 // - 힘(str), 민첩(dex), 지력(knowledge)
 // - 모든 필드의 접근 제어자는 private
 	private int str; 
@@ -27,31 +29,25 @@ public class Ex21_3_CharaterAbility {
 	public void setKnowledge(int knowledge) {
 		this.knowledge = knowledge;
 	}
-	public void setLevel(int level) {
+	public void setLevelUP(int level) {
 		this.level = level;
 	}
 //	경험치(exp, 100이 될 경우 레벨이 1증가하고 경험치는 0리셋)
 	public void setExp(int exp) {
-		if(exp >= 100) {
-			level++;
-			this.exp = 0;
+		this.exp += exp;  // 기존 경험치 + 새로 얻은 경험치
+		if(this.exp >= 100) {
+			this.level++; //100이상 되면 레벨1증가
+			this.exp = 0; // 1증가되면 경험치는 0
+			System.out.println("레벨 업! 현재 레벨 : " + this.level);
 		}
 	} 
 //	체력(hp, 초기값 100, 레벨업을 해도 회복되지 않음)
 	public void setHp(int hp) {
-		if (hp < 0) {
-			this.hp = 0;
-		} else {
-			this.hp = hp;
-		}
+		this.hp = hp;
 	}
 //	마력(mp,초기값 100, 레벨업을 해도 회복되지 않음)
 	public void setMp(int mp) {
-		if (mp < 0) {
-			this.mp = 0;
-		} else {
-			this.mp = mp;
-		}
+		this.mp = mp;
 	}
 	public int getStr() {
 		return str;
@@ -79,13 +75,15 @@ public class Ex21_3_CharaterAbility {
 //	 > toStirng은 문자열을 반환 합니다.
 //	 > public String toString(){return "문자열"}
 	
-	@Override 
-	public String toString(){
-//	   return "힘 : " + str + "민첩 : " + dex;
-	   return String.format("힘 : %d 민첩 : %d", str, dex);
-	   
-	}
-	
-	
+	@Override
+    public String toString() {
+        return "레벨 =" + level +
+               ", 힘 =" + str +
+               ", 민첩 =" + dex +
+               ", 지력 =" + knowledge +
+               ", 경험치 =" + exp +
+               ", HP =" + hp +
+               ", MP =" + mp;
+    }
 
 }

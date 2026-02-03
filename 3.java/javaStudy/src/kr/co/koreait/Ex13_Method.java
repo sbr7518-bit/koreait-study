@@ -49,9 +49,6 @@ public class Ex13_Method {
 	   bank.withdraw(3500);
 	   String check = bank.checkBalance();
 	   System.out.println(check);
-	  
-	   
-	   	   
 	}	
 	
 //	안녕하세요 출력하는 메서드
