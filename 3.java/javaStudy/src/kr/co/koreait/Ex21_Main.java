@@ -4,7 +4,7 @@ public class Ex21_Main {
 
 	public static void main(String[] args) {
 
-//		상속
+//		상속 
 //		 - 다른 클래스가 가지고 있는 필드, 메서드를 상속받아 재사용하는 것
 //		 - 선언 방식 : class 클래스명 extends 상속받을 클래스명
 //		 - 자바에서는 단일 상속만 가능 (부모는 1개만 가질 수 있음 = 다중상속 X)
