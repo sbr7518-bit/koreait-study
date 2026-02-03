@@ -11,13 +11,9 @@ public class Ex21_2_Warlord extends Ex21_2_Character {
 	int knowledge = 10;
 	int level = 1;
 	
-//	Ex21_2_Warlord(int str, int dex, int knowledge, int level) {
-//		super();
-//		this.str = str;
-//		this.dex = dex;
-//		this.knowledge = knowledge;
-//		this.level = level;
-//	}
+	Ex21_2_Warlord(int str, int dex, int knowledge, int level) {
+		super();
+	}
 	
 //	attack 메서드 생성
 //	 - "둔기를 휘두릅니다." 출력	
@@ -32,12 +28,7 @@ public class Ex21_2_Warlord extends Ex21_2_Character {
 //	 - "현재 레벨 : 00, 힘 : 00" 출력
 //	 - 현재 레벨을 1 증가시키고, 힘을 5 증가시킵니다.
 	  
-	  public void levelUP() {
-		 if() {
-			 System.out.println("레벨업 하여 힘이 " + );
-		 }
-	  }
-	
+
 	  
 	  
 	  
