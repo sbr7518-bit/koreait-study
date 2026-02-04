@@ -1,5 +1,7 @@
 package kr.co.training;
 
+import java.util.Scanner;
+
 public class Game {
 	
 	public static void main(String[] args) {
@@ -8,9 +10,13 @@ public class Game {
 	
 	public static void startGame() {
 		// Scanner 객체 생성
+		Scanner sc = new Scanner(System.in);
 		// Warlod 객체 생성
+		Warlod hero = new Warlod();  
 		// CharacterAbility 객체 생성
+		CharaterAbility abilty = new CharaterAbility();
 		
+		int menu;
 		do { // 게임 시작
 			System.out.println("게임 메뉴를 선택해주세요.");
 			System.out.println("1. 사냥 시작");
@@ -20,6 +26,7 @@ public class Game {
 			System.out.println("0. 종료");
 			System.out.print("메뉴 선택 : ");
 			// 스캐너로 입력 받기
+			menu = sc.nextInt();	
 			System.out.println("================");
 			if(menu == 1) {
 				huntMenu(); // 사냥 시작
@@ -41,6 +48,7 @@ public class Game {
 	
 	public static boolean huntMenu() {
 		// MonsterAbility 객체 생성
+		MonsterAbility monster = new MonsterAbility();
 		
 		do {
 			System.out.println("공격을 선택해주세요.");
@@ -51,6 +59,7 @@ public class Game {
 			System.out.println("0. 처음으로 돌아가기");
 			System.out.print("메뉴 선택 : ");
 			// 스캐너로 입력 받기
+			menu
 			System.out.println("================");
 
 			if(selectAttack == 1) {
