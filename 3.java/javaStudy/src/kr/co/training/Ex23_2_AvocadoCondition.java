@@ -1,0 +1,15 @@
+package kr.co.training;
+
+public class Ex23_2_AvocadoCondition {
+	
+	
+//	hasAvocado 메서드를 작성하세요.
+//	  > 해당 메서드는 false를 반환합니다.  // return
+	
+	public boolean hasAvocado(){
+		return false;
+	}
+	
+	
+
+}

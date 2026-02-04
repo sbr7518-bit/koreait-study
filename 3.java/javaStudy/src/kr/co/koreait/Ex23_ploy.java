@@ -29,6 +29,7 @@ public class Ex23_ploy {
 		cal.hanging();
 //		cal.onTheDesk();
 		
+		System.out.println("=======================");
 //		=============================================================
 		
 //		Ex23_3_Computer
@@ -46,6 +47,28 @@ public class Ex23_ploy {
 		cr.computer3 = new Ex23_3_LZ();
 		
 		cr.allPowerOn();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 
