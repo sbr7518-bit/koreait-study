@@ -7,16 +7,15 @@ public class Game {
 	public static void main(String[] args) {
 		startGame(); // 게임 시작
 	}
-	
 	public static void startGame() {
 		// Scanner 객체 생성
 		Scanner sc = new Scanner(System.in);
+		int menu;
 		// Warlod 객체 생성
-		Warlod hero = new Warlod();  
+		Warlord hero = new Warlord();  
 		// CharacterAbility 객체 생성
 		CharaterAbility abilty = new CharaterAbility();
 		
-		int menu;
 		do { // 게임 시작
 			System.out.println("게임 메뉴를 선택해주세요.");
 			System.out.println("1. 사냥 시작");
@@ -46,9 +45,14 @@ public class Game {
 		} while(true);
 	}
 	
-	public static boolean huntMenu() {
+	public static boolean huntMenu(Warlord hero) {
 		// MonsterAbility 객체 생성
-		MonsterAbility monster = new MonsterAbility();
+		MonsterAbility mons = new MonsterAbility();
+		CharaterAbility ch = new CharaterAbility();
+		
+		Scanner sc = new Scanner(System.in);
+		int menu;
+		int selectAttack;
 		
 		do {
 			System.out.println("공격을 선택해주세요.");
@@ -59,17 +63,22 @@ public class Game {
 			System.out.println("0. 처음으로 돌아가기");
 			System.out.print("메뉴 선택 : ");
 			// 스캐너로 입력 받기
-			menu
+			menu = sc.nextInt();
+			selectAttack = menu;
 			System.out.println("================");
-
+			
 			if(selectAttack == 1) {
 //				기본 공격 선택 시 : attack 메서드 호출
+				hero.attack(ch, mons);
 			} else if(selectAttack == 2) {
 //				힘 스킬 선택 시 : strSkill 메서드 호출
+				hero.strSkill(ch, mons);
 			} else if(selectAttack == 3) {
 //				민첩 스킬 선택 시 : dexSkill 메서드 호출
+				hero.dexSkill(ch, mons);
 			} else if(selectAttack == 4) {
 //				지력 스킬 선택 시 : knowledgeSkill 메서드 호출
+				hero.knowledgeSkill(ch, mons);
 			} else if(selectAttack == 0) {
 				// 처음으로 돌아가기
 				System.out.println("처음 메뉴로 돌아갑니다.");
@@ -85,7 +94,11 @@ public class Game {
 	}
 	
 
-	public static boolean setPorsion() {
+	public static boolean setPorsion(CharaterAbility ch) {
+		Scanner sc = new Scanner(System.in);
+		int menu;
+		int selectPorsion;
+		setPorsion(ch);
 		do {
 			System.out.println("인벤토리-포션");
 			System.out.println("1. 체력 포션");
@@ -94,6 +107,8 @@ public class Game {
 			System.out.println("0. 처음으로 돌아가기");
 			System.out.print("사용할 포션을 선택하세요: ");
 			// 스캐너로 입력 받기
+			menu = sc.nextInt();
+			selectPorsion = menu;
 			System.out.println("================");
 			
 			if(selectPorsion == 1) {
@@ -104,6 +119,13 @@ public class Game {
 //	             => "포션 사용 후 현재 체력 : OO"
 //	         > 소지중 체력 포션이 0개 일 경우
 //	             => "인벤토리 체력 포션이 없습니다." 출력 
+				if(ch.gethpPortionCount() >= 1) {
+					System.out.println("체력 포션을 사용했습니다.");
+					ch.addHp(-1);
+				} else if(ch.gethpPortionCount() == 0){
+					
+				}
+				
 			} else if(selectPorsion == 2) {
 //		         > 소지중 마력 포션이 1개 이상일 경우
 //	             => "마력 포션을 사용했습니다." 출력
@@ -194,5 +216,3 @@ public class Game {
 		System.out.println("================");
 		return true;
 	}
-	
-}
