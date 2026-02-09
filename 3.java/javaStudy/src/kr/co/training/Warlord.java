@@ -8,11 +8,23 @@ public class Warlord implements Character{
 			private int str = 30;
 			private int dex = 30;
 			private int knowledge = 10;
+			
+			public void str(int str) {
+				this.str = str;
+			}
+			public void dex(int dex) {
+				this.dex = dex;
+			}
+			public void knowledge(int knowledge) {
+				this.knowledge = knowledge;
+			}
 //
 //	  2. 기본 공격 attack 메서드
 //	    * 참고 : 케릭터가 먼저 공격하고, 그 다음 몬스터가 공격을 합니다.
 //	               즉, 서로 한 번씩 돌아가며 공격합니다.
 			
+			public Warlord(CharaterAbility ch) {
+			}
 			@Override
 			public void attack(CharaterAbility ch, MonsterAbility mon) {
 // ------- 케릭터 공격 차례
@@ -24,7 +36,7 @@ public class Warlord implements Character{
 					System.out.println("마력이 부족하여 공격할 수 없습니다.");
 					return;
 				} 
-				int damage = (int)(ch.getStr()*1.3);
+				int damage = (int)(this.str *1.3);
 				System.out.println("몬스터가 " + damage + "의 피해를 입었습니다!");
 				mon.takeDamage(damage);
 				ch.addMp(-6);
@@ -70,7 +82,7 @@ public class Warlord implements Character{
 					System.out.println("마력이 부족하여 공격할 수 없습니다.");
 					return;
 				} 
-				int damage = (int)(ch.getStr()*1.8);
+				int damage = (int)(this.str*1.8);
 				System.out.println("몬스터가 힘 스킬로 인해 " + damage + "피해를 입었습니다!");
 				mon.takeDamage(damage);
 				ch.addMp(-15);
@@ -119,7 +131,7 @@ public class Warlord implements Character{
 //			    - 몬스터가 민첩*0.7 만큼의 체력이 깍입니다.
 //			    - "몬스터가 민첩 스킬로 인해 OO의 피해를 입었습니다!" 출력
 //			    - 몬스터가 민첩*0.7 만큼의 체력이 깍입니다. (총 3회 공격)
-				int damage = (int)(ch.getDex() * 0.7);
+				int damage = (int)(this.dex * 0.7);
 				for (int i = 0; i <3; i++) {
 					System.out.println("몬스터가 민첩 스킬로 인해 " + damage + "피해를 입었습니다!");
 					mon.takeDamage(damage);
@@ -129,6 +141,7 @@ public class Warlord implements Character{
 					if(mon.getHp() <= 0) {
 						System.out.println("몬스터 사냥을 성공하셨습니다.");
 						ch.addExp(13);
+						return;
 					}
 				} 
 //			    - 케릭터의 마력 19 감소
@@ -166,7 +179,7 @@ public class Warlord implements Character{
 					System.out.println("마력이 부족하여 공격할 수 없습니다.");
 					return;
 				} 
-				int damage = (int)(ch.getKnowledge()*3.6);
+				int damage = (int)(this.knowledge*3.6);
 				System.out.println("몬스터가 지력 스킬로 인해 " + damage + "피해를 입었습니다!");
 				mon.takeDamage(damage);
 				ch.addMp(-28);
@@ -197,6 +210,15 @@ public class Warlord implements Character{
 					return;
 				}
 				
+			}
+			public int getStr() {
+				return str;
+			}
+			public int getDex() {
+				return dex;
+			}
+			public int getKnowledge() {
+				return knowledge;
 			}
 
 }
