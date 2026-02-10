@@ -12,7 +12,7 @@ import lombok.ToString;
  * 회원가입에 필요한 정보(id, name, password, ...)를 받습니다.
  */
 
-@Getter // get 생성 (입력, 대입)
+@Getter // get 생성 (입력,대입)
 @Setter // set 생성 (변경,수정)  -> 최대한 지향 하는게 좋다. 특정 값에 Set넣을 수 있음
 @NoArgsConstructor  // 기본 생성자
 @AllArgsConstructor  // 모든 필드가 다 있는 생성자

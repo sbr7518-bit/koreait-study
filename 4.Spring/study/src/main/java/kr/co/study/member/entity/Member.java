@@ -26,7 +26,9 @@ import lombok.Setter;
 public class Member {
 //	엔티티는 무조건 PK 지정해야 한다.
 	@Id    // PK(Primary key) 지정
-	@GeneratedValue(strategy = GenerationType.IDENTITY) // 기본 키 자동 증가 (auto_increment)
+	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	// > 기본 키 자동생성, id 값이 중복되지 않음 (자동생성 : auto_increment)
+	
 	private Long id;
 	private String userId;
 	private String userName;

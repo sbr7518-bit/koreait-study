@@ -8,11 +8,22 @@ public class Warlord implements Character{
 			private int str = 30;
 			private int dex = 30;
 			private int knowledge = 10;
-//
-//	  2. 기본 공격 attack 메서드
-//	    * 참고 : 케릭터가 먼저 공격하고, 그 다음 몬스터가 공격을 합니다.
-//	               즉, 서로 한 번씩 돌아가며 공격합니다.
 			
+			public void str(int str) {
+				this.str = str;
+			}
+			public void dex(int dex) {
+				this.dex = dex;
+			}
+			public void knowledge(int knowledge) {
+				this.knowledge = knowledge;
+			}
+			
+			public Warlord(CharaterAbility ch) {
+			}
+//			  2. 기본 공격 attack 메서드
+//		    * 참고 : 케릭터가 먼저 공격하고, 그 다음 몬스터가 공격을 합니다.
+//		               즉, 서로 한 번씩 돌아가며 공격합니다.
 			@Override
 			public void attack(CharaterAbility ch, MonsterAbility mon) {
 // ------- 케릭터 공격 차례
@@ -197,6 +208,15 @@ public class Warlord implements Character{
 					return;
 				}
 				
+			}
+			public int getStr() {
+				return str;
+			}
+			public int getDex() {
+				return dex;
+			}
+			public int getKnowledge() {
+				return knowledge;
 			}
 
 }

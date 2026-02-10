@@ -7,26 +7,12 @@
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Spring Hub</div>
-            <ul class="nav-center">
-                <li><a href="index.html" class="nav-link">홈</a></li>
-                <li><a href="announcements.html" class="nav-link">공지사항</a></li>
-                <li><a href="board.html" class="nav-link">자유게시판</a></li>
-                <li><a href="profile.html" class="nav-link">회원정보</a></li>
-            </ul>
-            <div class="nav-right">
-                <a href="login.html" class="btn btn-secondary" style="text-decoration: none;">로그인</a>
-                <a href="register.html" class="btn btn-primary" style="text-decoration: none;">회원가입</a>
-            </div>
-        </nav>
-    </header>
+    <header th:replace= "~{fragments/header :: global_header}"></header>
 
     <div class="container">
         <div class="form-card">
             <h2>회원가입</h2>
-            <!-- action="/member/register" method="POST" :
+            <!-- action="/member/register" method="POST" : button type = submit 을 무조건 사용해야 한다. POST를 입력하지 않으면 기본적인 GET으로 날라감
             	 웹사이트 네트워크 로그 -> 페이로드에 작성한 로고 네임을 집어넣어 확인 가능 -->
             <form action="/member/register" method="POST">
                 <div class="form-group">

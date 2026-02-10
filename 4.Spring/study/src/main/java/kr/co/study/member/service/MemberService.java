@@ -1,13 +1,15 @@
 package kr.co.study.member.service;
 
+import kr.co.study.member.dto.ReqLoginDTO;
 import kr.co.study.member.dto.ReqRegisterDTO;
+import kr.co.study.member.dto.ResLoginDTO;
 
 /**
  * 회원 도메인의 핵심 비즈니스 로직을 정의하는 서비스 인터페이스
  * 주로 Controller → Service → Repository 흐름에서 서비스 계층의 역할을 담당 
  */
 public interface MemberService {
-
+//	 추상 메서드 만들기
 	/**
 	 * 회원가입을 처리하는 메서드
 	 * 기능
@@ -17,8 +19,22 @@ public interface MemberService {
 	 *	- 필요한 경우 예외 발생 (ex. MemberException)	
 	 * @param request 사용자가 입력한 회원가입 정보를 담은 DTO
 	 */
-	
 	void register(ReqRegisterDTO request);
 	
+	/**
+	 * 로그인 처리 메서드
+	 * 
+	 * 기능 
+	 * 	- 해당 아이디를 가진 유저가 있는지 조회 (findByUserId) -> SELECT*FROM member WHERE user_id=?
+	 * 	- 만약 존재하지 않으면 null 반환
+	 * 	- 존재한다면 사용자가 입력한 평문 비밀번호로 BCrypt로 검증
+	 * 		> 사용자가 입력한 비밀번호가 암호화된 비밀번호와 일치하는지
+	 * 	- 비밀번호가 일치한다면 응답 객체 반환
+	 * 	- 일치하지 않는다면 null 반환
+	 * 		
+	 * @param request 사용자가 입력한 로그인 정보(userId, password)
+	 */
+	ResLoginDTO login(ReqLoginDTO request);
+//	인터페이스 쪽에서 void 메서드를 변경해줘야 오류가 없어진다.
 	
 }

@@ -1,0 +1,32 @@
+<!-- html 확장자를 가진 모든 요소들을 하나로 통합 -->
+
+<header th:fragment="global_header">
+	<nav>
+		<div class="logo">Spring Hub</div>
+		<ul class="nav-center">
+			<li><a href="index.html" class="nav-link active">홈</a></li>
+			<li><a href="announcements.html" class="nav-link">공지사항</a></li>
+			<li><a href="board.html" class="nav-link">자유게시판</a></li>
+			
+			<!-- 로그인을 하지 않을 시 회원정보가 보이지 않도록 하는 방법 th:if 조건을 걸어준다 -->
+			<li th:if="${session.LOGIN_USER != null}">
+			<a href="profile.html" class="nav-link">회원정보</a>
+			</li>
+		</ul>
+		<div class="nav-right" th:if="${session.LOGIN_USER == null}">
+			<a href="/member/login/form" class="btn btn-secondary">로그인</a> <a
+				href="/member/register/form" class="btn btn-primary"
+				style="text-decoration: none; display: inline-block;">회원가입</a>
+		</div>
+		
+		<!-- th:if -> 조건식 부여하는 법 -->
+		<div class="nav-right" th:if="${session.LOGIN_USER != null}">
+			<a href="/member/logout" class="btn btn-secondary">로그아웃</a>
+		</div>
+	</nav>
+</header>
+
+
+
+
+
