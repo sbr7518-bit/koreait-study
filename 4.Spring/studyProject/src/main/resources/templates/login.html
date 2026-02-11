@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>학습게시판 - 로그인</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" th:href="css/style.css">
 </head>
 <body>
 
@@ -42,13 +42,14 @@
       </div>
 
       <!-- 로그인 폼 -->
-      <form onsubmit="handleFormSubmit(event, '로그인 성공! (학습용 알림)', 'board.html')">
+      <form action="/member/login" method="POST">
 
         <div class="form-group">
           <label for="email">이메일</label>
           <input
             type="email"
             id="email"
+            name="email"
             class="form-input"
             placeholder="example@email.com"
             required
@@ -58,12 +59,13 @@
 
         <div class="form-group">
           <label for="password">비밀번호</label>
-          <input
-            type="password"
-            id="password"
-            class="form-input"
-            placeholder="비밀번호를 입력하세요"
-            required
+          <input 
+          type="password" 
+          id="password" 
+          name="password"
+          class="form-input" 
+          placeholder="비밀번호를 입력하세요" 
+          required
           >
           <span class="error-msg">비밀번호를 입력해 주세요.</span>
         </div>
@@ -94,7 +96,7 @@
       </button>
 
       <div class="card-footer">
-        계정이 없으신가요? <a href="signup.html">회원가입</a>
+        계정이 없으신가요? <a href="/member/register/form">회원가입</a>
       </div>
     </div>
 

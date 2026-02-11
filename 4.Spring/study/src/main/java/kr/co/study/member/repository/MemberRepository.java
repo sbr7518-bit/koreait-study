@@ -1,7 +1,6 @@
 package kr.co.study.member.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
 import kr.co.study.member.entity.Member;
 
 /**
