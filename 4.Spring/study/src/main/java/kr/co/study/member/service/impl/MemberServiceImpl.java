@@ -73,6 +73,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 		// .matches 서로 비교하게 만드는 메서드
 		
+		// 응답 DTO 변환
 		ResLoginDTO response = new ResLoginDTO();
 		response.setId(member.getId());
 		response.setUserId(member.getUserId());

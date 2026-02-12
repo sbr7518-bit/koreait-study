@@ -1,0 +1,37 @@
+<!-- ===== Header ===== -->
+<header th:fragment="global_header">
+  <div class="header-inner">
+    <a th:href="@{/}" class="logo">
+      <span class="logo-icon">L</span>
+      학습게시판
+    </a>
+
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="메뉴 열기">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav">
+      <a th:href="@{/}" class="active">홈</a>
+      <a th:href="@{/board}">게시판</a>
+
+      <ul class="nav-links">
+        <li th:if="${session.LOGIN_USER != null}">
+          <a th:href="@{/profile}" class="nav-link">내 정보</a>
+        </li>
+      </ul>
+
+      <!-- 비로그인 -->
+      <div class="nav-right" th:if="${session.LOGIN_USER == null}">
+        <a th:href="@{/member/login/form}" class="btn btn-ghost btn-sm">로그인</a>
+        <a th:href="@{/member/register/form}" class="btn btn-primary btn-sm"
+           style="text-decoration: none; display: inline-block;">회원가입</a>
+      </div>
+
+      <!-- 로그인 -->
+      <div class="nav-right" th:if="${session.LOGIN_USER != null}">
+        <span class="nav-user" th:text="${session.LOGIN_USER.nickName} + '님'"></span>
+        <a th:href="@{/member/logout}" class="btn btn-secondary btn-sm">로그아웃</a>
+      </div>
+    </nav>
+  </div>
+</header>

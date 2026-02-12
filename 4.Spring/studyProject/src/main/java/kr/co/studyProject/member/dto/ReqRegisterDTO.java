@@ -12,7 +12,6 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Data
 public class ReqRegisterDTO {
 	private String userName;
 	private String email;

@@ -2,6 +2,7 @@ package kr.co.studyProject.member.entity;
 
 import java.time.LocalDateTime;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,6 +28,8 @@ public class Member {
 	private String email;
 	private String nickName;
 	private String password;
+	
+	@Column(name = "phone_number")
 	private String phoneNumber;
 	
 	private LocalDateTime createdAt;

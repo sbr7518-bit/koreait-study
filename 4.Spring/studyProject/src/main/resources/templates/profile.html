@@ -4,32 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>학습게시판 - 내 정보</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
-  <!-- ===== Header ===== -->
-  <header class="header">
-    <div class="header-inner">
-      <a href="home.html" class="logo">
-        <span class="logo-icon">L</span>
-        학습게시판
-      </a>
-
-      <button class="menu-toggle" onclick="toggleMenu()" aria-label="메뉴 열기">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav">
-        <a href="home.html">홈</a>
-        <a href="board.html">게시판</a>
-        <a href="profile.html" class="active">내 정보</a>
-        <div class="nav-auth">
-          <a href="login.html" class="btn btn-ghost btn-sm">로그아웃</a>
-        </div>
-      </nav>
-    </div>
-  </header>
+  <header th:replace= "~{fragments/header :: global_header}"></header>
 
   <!-- ===== Main ===== -->
   <main class="main">
@@ -212,6 +191,6 @@
     <p>학습용 웹페이지 &copy; 2026 &mdash; HTML, CSS, JavaScript 실습 프로젝트</p>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script src="/js/app.js"></script>
 </body>
 </html>
