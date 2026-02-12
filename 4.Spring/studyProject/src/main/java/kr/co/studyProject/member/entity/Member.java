@@ -32,7 +32,7 @@ public class Member {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
-	private LocalDateTime createdAt;
+	private LocalDateTime createdAt ;
 	private LocalDateTime updatedAt;
 	
 	@PrePersist

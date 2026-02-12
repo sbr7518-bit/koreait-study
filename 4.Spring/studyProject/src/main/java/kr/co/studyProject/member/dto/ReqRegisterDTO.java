@@ -20,3 +20,4 @@ public class ReqRegisterDTO {
 	private String passwordCheck;
 	private String phoneNumber;
 }
+ 

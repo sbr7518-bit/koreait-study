@@ -14,7 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class ResBoardDTO {
-	private Long id;
+	private Long id; 
 	private String category;
 	private String title;     //제목
 	private String content;      // 작성내용

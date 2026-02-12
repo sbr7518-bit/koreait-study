@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class NoticeController {
 	private final BoardService boardService;
-	
+	 
 	
 	/**
 	 * 공지사항 페이지로 이동하는 메서드

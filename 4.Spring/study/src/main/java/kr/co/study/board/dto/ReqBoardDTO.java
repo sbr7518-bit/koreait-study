@@ -9,8 +9,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-@ToString
+@AllArgsConstructor 
+@ToString 
 public class ReqBoardDTO {
 
 	private String category;

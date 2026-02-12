@@ -20,7 +20,7 @@ import lombok.Setter;
 
 @Entity // JAP 엔티티로 선언
 @Getter 
-@Setter
+@Setter 
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {

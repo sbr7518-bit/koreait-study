@@ -14,7 +14,7 @@ import lombok.Setter;
  */
 
 @Getter 
-@Setter
+@Setter 
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResLoginDTO {
