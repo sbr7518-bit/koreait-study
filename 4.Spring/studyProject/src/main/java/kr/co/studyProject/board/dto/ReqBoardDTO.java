@@ -1,4 +1,4 @@
-package kr.co.study.board.dto;
+package kr.co.studyProject.board.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,12 +10,13 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor 
-@ToString 
+@ToString
 public class ReqBoardDTO {
-
+	
 	private Long id;
+	private String email;
 	private String category;
 	private String title;
 	private String content;
-	
+
 }

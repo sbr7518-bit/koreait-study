@@ -1,7 +1,6 @@
-package kr.co.study.board.entity;
+package kr.co.studyProject.board.entity;
 
 import java.time.LocalDateTime;
-
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,57 +11,51 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
-import kr.co.study.member.entity.Member;
+import kr.co.studyProject.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity 
-@Getter 
+@Entity
+@Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Board {
-	 
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	// 게시판 종류 구분
-	//  - NOTICE : 공지사항
-	//  - FREE : 자유게시판
+	
+	// 게시판 엔티티 저장 
 	private String boardType;
 	private String category;
 	private Integer viewCount;
 	private String title;
 	
-	@Lob // -> 대용량 데이터를 의미
+	@Lob
 	private String content;
 	
-	@ManyToOne //회원 한명이 여러 게시글을 작성할 수 있게 한다. = (Board 엔티티) N:1 (Member 엔티티)
-	@JoinColumn(name="writer_id")    // 실제 테이블의 FK 컬럼명(name="")
+	@ManyToOne
+	@JoinColumn(name="writer_id")
 	private Member writer;
-	
 	
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
-
-//	저장되기 전 자동 호출
+	
 	@PrePersist
 	public void prePersist() {
 		this.createdAt = LocalDateTime.now();
 		this.updatedAt = LocalDateTime.now();
 	}
 	
-//	수정되기 전 자동 호출
 	@PreUpdate
 	public void preUpdate() {
 		this.updatedAt = LocalDateTime.now();
 	}
 	
 	
-	
-	
-	
+
 }

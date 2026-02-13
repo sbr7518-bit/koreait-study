@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 상세보기 - Spring 학습 플랫폼</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
     <header th:replace= "~{fragments/header :: global_header}"></header>
@@ -25,7 +25,7 @@
                 </div>
                 <!-- 수정, 삭제 버튼 추가 -->
                 <div class="detail-actions" th:if="${session.LOGIN_USER != null and session.LOGIN_USER.userName == notice.writerName}">
-                    <a href="announcement-edit.html" class="btn btn-secondary" style="text-decoration: none;">수정</a>
+                    <a th:href="'/board/notice/edit/form?id=' + ${notice.id}" class="btn btn-secondary" style="text-decoration: none;">수정</a>
                     <button class="btn btn-secondary" onclick="deletePost()">삭제</button>
                 </div>
             </div>
@@ -57,10 +57,16 @@
         <div class="modal-content">
             <h2 style="margin-bottom: 1.5rem;">게시글 삭제</h2>
             <p style="margin-bottom: 2rem; color: var(--text-secondary);">정말 이 게시글을 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.</p>
-            <div class="form-actions">
-                <button class="btn btn-primary" onclick="confirmDelete()" style="background-color: var(--error);">삭제</button>
-                <button class="btn btn-secondary" onclick="closeDeleteModal()">취소</button>
-            </div>
+            
+		    <form action="/board/notice/delete">
+		    	<input type="hidden" name="id" th:value="${notice.id}">           
+            	<div class="form-actions">
+                	<button type="submit" class="btn btn-primary" onclick="confirmDelete()" 
+                			style="background-color: var(--error);">삭제</button>
+                	<button type="button" class="btn btn-secondary" onclick="closeDeleteModal()">취소</button>
+            	</div>
+            </form>
+            
         </div>
     </div>
 

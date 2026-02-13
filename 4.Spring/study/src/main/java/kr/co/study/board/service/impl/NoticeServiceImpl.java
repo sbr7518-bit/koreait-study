@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import kr.co.study.board.dto.ReqBoardDTO;
 import kr.co.study.board.dto.ResBoardDTO;
-import kr.co.study.board.dto.ResBoardDTO.ResBoardDTOBuilder;
 import kr.co.study.board.entity.Board;
 import kr.co.study.board.repository.BoardRepository;
 import kr.co.study.board.service.BoardService;
@@ -116,8 +115,66 @@ public class NoticeServiceImpl implements BoardService {
 									.createdAt(board.getCreatedAt())
 									.viewCount(board.getViewCount())
 									.build();
-			
 			return response;
+		}
+		
+		@Override
+		@Transactional
+		public ResBoardDTO getBoardDetailEdit(Long id){
+			
+			Board board = boardRepository.findById(id).orElse(null);
+			
+			// 3. 응답 DTO 
+			ResBoardDTO response = ResBoardDTO.builder()
+									.id(board.getId())
+									.title(board.getTitle())
+									.content(board.getContent())
+									.writerName(board.getWriter().getUserName())
+									.createdAt(board.getCreatedAt())
+									.viewCount(board.getViewCount())
+									.build();
+			return response;
+		}
+		
+		@Override
+		@Transactional
+		public void edit(ReqBoardDTO request, Long id) {
+			
+			// 1. 기존 게시글이 존재하는지 조회
+			Board board = boardRepository.findById(request.getId()).orElse(null);
+			
+			// 조회할 엔티티가 널이 아니고 조회한 아이디가 getWriter().getId() 비교 했을시 같지 않을 때 실행.
+			if(board != null && !board.getWriter().getId().equals(id)) {
+				System.out.println("게시글이 없거나 작성자가 아닙니다.");
+			}
+			
+			// 2. 게시글 수정 반영
+			board.setCategory(request.getCategory());
+			board.setTitle(request.getTitle());
+			board.setContent(request.getContent());
+			// => set을 통해 내용이 변경되면서 flush ()호출 더티체킹을 통해 1차캐시와 스냅샷을 비교하며 차이점을 찾아낸다.
+			//    변경된 값이 있으면 SQL를 작성 → SQL 저장소에 UPDATE board SET category="이벤트", ... WHERE id(PK값)=? 을 작성.
+			//	  SQL 실행 → 3360:(포트)에 쿼리를 날린다. 
+			//	  commit()을 찍고 트랜잭션 종료.
+		}
+		
+		@Override
+		public void delete(Long id, Long loginUserId) {
+			
+			// 1. id로 게시글 조회
+			Board board = boardRepository.findById(id).orElse(null);
+			
+			// 2. 해당하는 게시글이 존재하는지 확인 및 작성자 검증
+			if(board != null) {
+			   System.out.println("삭제할 수 없습니다.");
+			} else if (!board.getWriter().getId().equals(loginUserId)) {
+			   System.out.println("삭제 권한이 없습니다.");
+			}
+			
+			// 3. 삭제 처리
+			boardRepository.delete(board);
+			
+			
 		}
 		
 }

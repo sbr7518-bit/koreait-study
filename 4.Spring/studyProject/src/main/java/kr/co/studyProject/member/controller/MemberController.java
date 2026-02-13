@@ -30,7 +30,7 @@ public class MemberController {
 	
 	// post => 가입처리 (/member/signup (POST)	 템플릿 redirect:/member/login/form)
 	@PostMapping("/signup")
-	public String signup(@ModelAttribute ReqRegisterDTO request) {
+	public String signup(ReqRegisterDTO request) {
 		memberService.signup(request);
 		return "redirect:/member/login/form";
 	}

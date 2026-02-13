@@ -24,7 +24,9 @@
   
         <a th:if="${session.LOGIN_USER == null}"
            th:href="@{/member/register/form}" class="btn btn-primary btn-lg">회원가입 하기</a>
-        <a href="board.html" class="btn btn-secondary btn-lg">게시판 보기</a>
+        <a th:href="@{/board/form}" class="btn btn-secondary btn-lg">게시판 보기</a>
+        
+        "/board/notice" class="nav-link"
       </div>
     </section>
 

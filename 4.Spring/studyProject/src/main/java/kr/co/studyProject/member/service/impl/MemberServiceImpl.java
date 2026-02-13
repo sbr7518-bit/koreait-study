@@ -19,23 +19,19 @@ public class MemberServiceImpl implements MemberService {
 	private final BCryptPasswordEncoder passwordEncoder;
 
 	
-	
 	@Override
 	public void signup(ReqRegisterDTO request) {
-		
+
 		if(!request.getPassword().equals(request.getPasswordCheck())) {
 			System.out.println("비밀번호가 일치하지 않습니다.");
-			return;
 		}
 		
 		if(memberRepository.existsByEmail(request.getEmail())) {
 			System.out.println("이미 사용중인 이메일 입니다.");
-			return;
 		}
 		
 		if(memberRepository.existsByNickName(request.getNickName())) {
 			System.out.println("이미 사용중인 닉네임 입니다.");
-			return;
 		}
 		
 		String encodedPassword = passwordEncoder.encode(request.getPassword());
