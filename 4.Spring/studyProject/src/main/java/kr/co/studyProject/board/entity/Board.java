@@ -3,6 +3,7 @@ package kr.co.studyProject.board.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,13 +33,13 @@ public class Board {
 	// 게시판 엔티티 저장 
 	private String boardType;
 	private String category;
-	private Integer viewCount;
+	private Integer viewCount = 0;
 	private String title;
 	
 	@Lob
 	private String content;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="writer_id")
 	private Member writer;
 	

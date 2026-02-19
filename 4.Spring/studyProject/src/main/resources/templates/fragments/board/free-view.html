@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>학습게시판 - 게시글 보기</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -16,25 +16,44 @@
 
       <!-- Post Header -->
       <div class="post-header">
-        <h2>CSS Flexbox와 Grid의 차이점 정리</h2>
+        <h2 th:text="${board.title}">CSS Flexbox와 Grid의 차이점 정리</h2>
         <div class="post-meta">
           <span class="post-meta-item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            김개발
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span th:text="${board.writer != null ? board.writer.nickName : '알수없음'}">김개발</span>
           </span>
           <span class="post-meta-item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            <span th:text="${board.createdAt != null ? #temporals.format(board.createdAt, 'yyyy-MM-dd') : ''}">
             2026-02-10
-          </span>
+          	</span>
+           </span>	
           <span class="post-meta-item">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-            조회 42
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+            <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <span th:text="'조회 ' + ${board.viewCount}">조회 0</span>
           </span>
         </div>
       </div>
 
       <!-- Post Body -->
       <div class="post-body">
+      <p class="post-content" th:text="${board.content}" style="white-space: pre-wrap;">
+      	내용</p>
+      	
+      	<div th:if="${board.writer == null}">
+        <hr style="margin: 1.5rem 0; border: 0; border-top: 1px solid #e5e7eb;">
+      	
         <p>
           CSS에서 레이아웃을 구성할 때 가장 많이 사용되는 두 가지 방법은 <strong>Flexbox</strong>와 <strong>Grid</strong>입니다.
           각각의 특징과 사용 시나리오를 정리해 보겠습니다.
@@ -73,13 +92,15 @@
 
       <!-- Post Actions -->
       <div class="post-actions">
-        <a href="board.html" class="btn btn-secondary">
+        <a th:href="@{/board/free}" class="btn btn-secondary">
           <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
           목록으로
         </a>
         <div class="btn-group">
-          <a href="board-edit.html" class="btn btn-secondary btn-sm">수정</a>
-          <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteModal()">삭제</button>
+          <a th:if="${board.writer != null}" th:href="@{/board/free/{id}/edit(id=${board.id})}" 
+          	 class="btn btn-secondary btn-sm">수정</a>
+          <button  th:if="${board.writer != null}" type="button" 
+          		   class="btn btn-danger btn-sm" onclick="showDeleteModal()">삭제</button>
         </div>
       </div>
 
@@ -113,7 +134,7 @@
 
         <!-- Comment Form -->
         <form class="comment-form" onsubmit="handleFormSubmit(event, '댓글이 등록되었습니다! (학습용 알림)')">
-          <textarea class="form-textarea" placeholder="댓��을 입력하세요..." required></textarea>
+          <textarea class="form-textarea" placeholder="댓글을 입력하세요..." required></textarea>
           <button type="submit" class="btn btn-primary">등록</button>
         </form>
       </div>
@@ -138,6 +159,6 @@
     <p>학습용 웹페이지 &copy; 2026 &mdash; HTML, CSS, JavaScript 실습 프로젝트</p>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script th:src="@{/js/app.js}"></script>
 </body>
 </html>

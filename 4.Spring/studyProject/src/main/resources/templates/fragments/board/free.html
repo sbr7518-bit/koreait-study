@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>학습게시판 - 게시판</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
 
@@ -27,8 +27,8 @@
 
     <!-- Board Top Bar -->
     <div class="board-topbar">
-      <span class="info">총 <strong>8</strong>개의 게시글</span>
-      <a href="board-write.html" class="btn btn-primary btn-sm">
+      <span class="info">총 <strong th:text="${page.totalElements}">0</strong>개의 게시글</span>
+      <a th:href="@{/board/free/write}" class="btn btn-primary btn-sm">
         <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         새 글 작성
       </a>
@@ -46,11 +46,45 @@
             <th class="col-views">조회수</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+		<tbody>
+		 <!-- 게시글이 없을 때 -->
+	     <tr th:if="${page.totalElements == 0}">
+		   <td colspan="5" style="text-align: center;">현재 게시글이 없습니다.</td>
+		 </tr>
+		 
+
+		 <!-- 게시글 목록(DB) -->
+		 <tr th:if="${page.totalElements > 0}"
+		 	 th:each="b, stat : ${page.content}">
+   		 <td class="col-no" th:text="${page.totalElements - (page.number * page.size) - stat.index}"> 1 </td>
+ 		   
+ 		 <td class="col-title">
+      	 	<a th:href="@{/board/free/{id}(id=${b.id})}" th:text="${b.title}">제목</a>
+ 	     </td>
+     		
+     	  <td class="col-author"
+			  th:text="${b.writer != null ? b.writer.nickName : '알수없음'}">작성자</td>
+ 		  
+ 		  <td class="col-date"
+    	      th:text="${b.createdAt != null ? #temporals.format(b.createdAt, 'yyyy-MM-dd') : ''}">
+			  2026-02-10</td>
+
+			<td class="col-views" th:text="${b.viewCount}">0</td>
+	     </tr>
+	     
+	     <!-- 구분선 -->
+	     <tr>
+ 		  <td colspan="5"
+     		  style="text-align:center; background:#f8fafc; font-weight:600;">
+   			  샘플 게시글
+  		  </td>
+		 </tr>
+	     
+	     <!-- 샘플 게시글 1~8 -->
+		  <tr>
             <td class="col-no">8</td>
             <td class="col-title">
-              <a href="board-view.html">CSS Flexbox와 Grid의 차이점 정리</a>
+              <a th:href="@{/board/free/8}"> CSS Flexbox와 Grid의 차이점 정리</a>
               <span class="badge badge-primary" style="margin-left: 0.5rem;">NEW</span>
             </td>
             <td class="col-author">김개발</td>
@@ -60,7 +94,7 @@
           <tr>
             <td class="col-no">7</td>
             <td class="col-title">
-              <a href="board-view.html">JavaScript 기초 - 변수와 자료형</a>
+              <a th:href="@{/board/free/7}">JavaScript 기초 - 변수와 자료형</a>
             </td>
             <td class="col-author">이학생</td>
             <td class="col-date">2026-02-09</td>
@@ -69,7 +103,7 @@
           <tr>
             <td class="col-no">6</td>
             <td class="col-title">
-              <a href="board-view.html">HTML 시맨틱 태그 활용법</a>
+              <a th:href="@{/board/free/6}">HTML 시맨틱 태그 활용법</a>
             </td>
             <td class="col-author">박코딩</td>
             <td class="col-date">2026-02-08</td>
@@ -78,7 +112,7 @@
           <tr>
             <td class="col-no">5</td>
             <td class="col-title">
-              <a href="board-view.html">반응형 웹 디자인 미디어 쿼리 예제</a>
+              <a th:href="@{/board/free/5}">반응형 웹 디자인 미디어 쿼리 예제</a>
             </td>
             <td class="col-author">최프론트</td>
             <td class="col-date">2026-02-07</td>
@@ -87,7 +121,7 @@
           <tr>
             <td class="col-no">4</td>
             <td class="col-title">
-              <a href="board-view.html">CSS 애니메이션과 트랜지션 비교</a>
+              <a th:href="@{/board/free/4}">CSS 애니메이션과 트랜지션 비교</a>
             </td>
             <td class="col-author">김개발</td>
             <td class="col-date">2026-02-05</td>
@@ -96,7 +130,7 @@
           <tr>
             <td class="col-no">3</td>
             <td class="col-title">
-              <a href="board-view.html">웹 접근성(a11y) 기본 가이드</a>
+              <a th:href="@{/board/free/3}">웹 접근성(a11y) 기본 가이드</a>
             </td>
             <td class="col-author">정디자인</td>
             <td class="col-date">2026-02-03</td>
@@ -105,7 +139,7 @@
           <tr>
             <td class="col-no">2</td>
             <td class="col-title">
-              <a href="board-view.html">DOM 조작 기본 메서드 정리</a>
+              <a th:href="@{/board/free/2}">DOM 조작 기본 메서드 정리</a>
             </td>
             <td class="col-author">이학생</td>
             <td class="col-date">2026-02-01</td>
@@ -114,7 +148,7 @@
           <tr>
             <td class="col-no">1</td>
             <td class="col-title">
-              <a href="board-view.html">게시판에 오신 것을 환영합니다!</a>
+              <a th:href="@{/board/free/1}">게시판에 오신 것을 환영합니다!</a>
               <span class="badge badge-success">공지</span>
             </td>
             <td class="col-author">관리자</td>
@@ -126,12 +160,26 @@
     </div>
 
     <!-- Pagination -->
-    <nav class="pagination" aria-label="페이지 이동">
-      <a href="#" class="disabled" aria-label="이전 페이지">&laquo;</a>
-      <span class="active">1</span>
-      <a href="#">2</a>
-      <a href="#">3</a>
-      <a href="#" aria-label="다음 페이지">&raquo;</a>
+    
+    <nav class="pagination" aria-label="페이지 이동" th:if="${page.totalPages > 1}">
+      
+      <!-- 이전  -->
+      <a th:if="${page.hasPrevious()}"
+      	 th:href="@{/board/free(page=${page.number - 1}, size=${page.size})}"
+      	 aria-label="이전 페이지">&laquo;</a>
+      <a th:if="${!page.hasPrevious()}" class="disabled" aria-label="이전 페이지">&laquo;</a>
+      
+      <!-- 페이지 번호 (화면은 1부터) -->
+	  <a th:each="p : ${#numbers.sequence(1, page.totalPages)}"
+		 th:href="@{/board/free(page=${p - 1}, size=${page.size})}"
+		 th:text="${p}"
+		 th:classappend="${(p - 1) == page.number} ? 'active' : ''"> 1 </a>
+
+	  <!-- 다음 -->   
+      <a th:if="${page.hasNext()}"   
+         th:href="@{/board/free(page=${page.number + 1}, size=${page.size})}"
+         aria-label="다음 페이지">&raquo;</a>
+      <a th:if="${!page.hasNext()}" class="disabled" aria-label="다음 페이지">&raquo;</a>
     </nav>
 
   </main>
@@ -141,6 +189,6 @@
     <p>학습용 웹페이지 &copy; 2026 &mdash; HTML, CSS, JavaScript 실습 프로젝트</p>
   </footer>
 
-  <script src="js/app.js"></script>
+  <script th:src="@{/js/app.js}"></script>
 </body>
 </html>
