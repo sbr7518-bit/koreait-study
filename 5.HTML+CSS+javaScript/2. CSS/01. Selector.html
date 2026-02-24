@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #internal-style {
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+
+    <!-- link : 관련 CSS 링크 파일(별도 생성)을 가져와야 적용됨 -->
+    <link rel="stylesheet" href="./01.style.css">
+
+</head>
+<body>
+    <h2>CSS (Cascading Style sheets)</h2>
+    <p>HTML을 꾸며주기 위해 사용되는 스타일 시트</p>
+
+    <!-- 
+        inline 스타일 방식
+            - HTML 요소의 style 속성을 사용하여 직접 CSS 스타일을 지정하는 빙삭
+            - CSS 적용 우선 순위 매우 높음
+    -->
+    <p style="color: blue; font-size: 22px;"> inline 스타일 방식입니다.</p>
+
+    <!-- 
+        내부 스타일 방식
+            - HTML 문서의 head 태그 내에 <style>을 활용하여 CSS 스타일을 지정하는 방식
+    -->
+    <p id="initial-scale">internal 스타일 방식입니다.</p>
+
+    <!-- 
+        외부 스타일 방식  (가장 선호)
+            - CSS 스타일을 별도의 외부 파일로 만들고 가져와서 사용하는 방식
+    -->
+    <p id="external-style">external 스타일 방식입니다.</p>
+
+    <h1 class="color_blue small_font">CSS</h1>
+    
+    <!-- id는 고유적으로 지정. DB의 PK라 생각하면 된다. -->
+    <p id="aqua_font">Hello, CSS!</p>
+    <h2 class="color_blue small_font">HTML</h2>
+    <p>Hello, HTML!</p>
+
+    <hr>
+    <input type="text">
+    <input type="password" class="input-password">
+
+    <hr>
+    <button type="button" class="btn">버튼1</button>
+    <button type="rest" class="btn">버튼2</button>
+    <p>텍스트1</p>
+    <p class="color_red">텍스트2</p>
+
+    <hr>
+    <!-- 요소들의 그룹화를 담당하는 태그 -->
+    <div>
+        <h2>h2  요소입니다.</h2>
+        
+        <ul>
+            <li>
+                <p>아이템1</p>
+            </li>
+            <li>
+                <h2>아이템2</h2>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <p>아이템3</p>
+            </li>
+            <li>
+                <h2>아이템4</h2>
+            </li>
+        </ul>
+    </div>
+
+    <hr>
+    <button class="reaction-btn">버튼</button>
+    <input type="text" class="reaction-input">
+
+
+    
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

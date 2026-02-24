@@ -1,0 +1,99 @@
+#external-style {
+    color: aqua;
+    font-size: 12px;
+}
+
+
+/* 
+    전체 선택자
+* {
+    color: blueviolet;
+}
+*/
+
+/* 클래스 선택자 */
+.color_blue {
+    color: blue;
+}
+
+
+.small_font {
+    font-size: 10px;
+}
+
+/* 아이디 선택자 */
+#aqua_font  {
+    color: aqua;
+}
+
+/* 속성 선택자 (태그 선택자)
+input[type="text"] {
+    background-color: blue;
+} */
+
+.input-password[type="password"] {
+    background-color: aqua;
+}
+
+
+/* 그룹 선택자 */
+.btn, .color_red {
+    color: red;
+}
+
+/* 자식 선택자 (부모 바로 아래에 있는 요소만 선택)*/
+div > h2 {
+    color: deepskyblue;
+}
+
+/* 후손 선택자 (부모 안에 있는 요소(자식 포함)들을 선택)*/
+div p {
+    color:gold;
+}
+
+
+/* 동위 선택자 (+ : 사용시 바로 아래에 있는 하나만 선택)*/
+h2 ~ ul {
+    color: darkorchid;
+}
+
+
+/* 반응 선택자 
+    [상태]
+    hover : 마우스를 버튼에 올릴 때
+    active : 마우스를 클릭할 때
+    focus : 마우스가 포커싱 된 상태일때 반영됨.
+*/
+.reaction-btn:hover {
+    background-color: antiquewhite;
+}
+
+.reaction-btn:active {
+    background-color: cadetblue;
+}
+
+.reaction-input:focus {
+    color: red;
+    cursor: help;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 연습용 페이지</title>
+</head>
+<body>
+    <!-- header : 시맨틱 태그(의미론적 태그) -->
+    <header>
+        <h1>HYML 연습용 페이지 입니다.</h1>
+        <p>목차별로 태그를 나눠 정리했습니다.</p>
+    </header>
+
+    <!-- 목 차 -->
+    <nav>
+        <h2>목차</h2>
+        <ul>
+            <li>
+                <!-- <a> ~ </a> 까지를 '요소 태그'라 부른다. (<a> : 태그) -->
+                <a href="#text"> 1) 텍스트 요소</a>
+            </li>
+            <li>
+                <a href="#img-hyper-text"> 2) 이미지와 하이퍼링크 요소</a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <section id="test">
+            <h2>1) 텍스트 요소</h2>
+            <p>텍스트를 표현하거나 의미를 부여하는 태그 종류</p>
+
+            <!-- 제목 태그 
+                &lt : <를 표현
+                &gt : >를 표현 
+            -->
+            <h3>&lt;h1&gt; ~ &lt;h6&gt; 제목</h3>
+            <p> 설명 : 제목을 나타내는 태그이며 숫자가 커질수록 중요도가 낮음</p>
+
+            <h6>h6 제목 예시</h6>
+            <h2>h2 제목 예시</h2>
+
+            <br><br>
+            <h3> &lt;strong&gt; &lt;b&gt;, 문자를 강조해주는 태그 </h3>
+            <p>strong 설명 : 중요하거나 강조되어야 하는 내용을 나타냄</p>
+            <p>b 설명 : 중요하거나 강조되어야 하는 내용을 시각적으로만 나타냄</p>
+            <p>차이점 : strong은 스크린 리더 등의 사용자에게 중요한 내용임을 알려줌</p>
+            <strong> strong 입니다.</strong>
+            <b>b 입니다.</b>
+            
+            <!-- 줄눈선(ㅡ)을 만들어주는 태그 -->
+            <hr> 
+            <h3>&lt;small&gt; 작은 문자</h3>
+            <p>설명 : 기본 문자보다 작게 표시하는 태그</p>
+            <small>small 입니다.</small>
+
+            <hr>
+            <h3>&lt;u&gt; &lt;s&gt; 밑줄과 취소선</h3>
+            <p> u 설명 : 글자에 밑줄을 표시하는 태그</p>
+            <P> s 설명 : 글자에 취소선을 표시하는 태그</P>
+            <u> u 입니다.</u>
+            <s> s 입니다.</s>
+
+            <hr>
+            <h3>&lt;p&gt; 단락</h3>
+            <p>설명 : 글의 단락(문단)을 나타내는 태그</p>
+            <p>p 입니다.</p>
+
+            <hr>
+            <h3>&lt;sup&gt;, &lt;sub&gt; 첨자</h3>
+            <p>sup 설명 : 위 첨자로 나타내는 태그</p>
+            <p>sub 설명 : 아래 첨자로 나타내는 태그</p>
+            <sup>sup 입니다.</sup> <sub>sub 입니다.</sub>
+
+        </section>
+
+        <hr>
+        <section id="img-hyper-text">
+            <h2>2) 이미지와 하이퍼링크 요소</h2>
+            <p>이미지와 하이퍼링크를 사용하는 태그 종류</p>
+
+            <h3>&lt;img&gt; 이미지</h3>
+            <p> 설명 : 이미지를 보여주는 태그</p>
+
+            <img src="./고양이.jpg" alt="고양이">
+            <!-- 웹사이트에 있는 이미지 링크 복사로 이미지를 불러올 수도 있다. -->
+            <img src="https://ssl.pstatic.net/melona/libs/1557/1557794/60ce762310834916a38d_20260224130652229.jpg" alt="광고배너">
+
+            <hr>
+            <h3>&lt;a&gt; 하이퍼링크 태그</h3>
+            <p> 설명 : 다른 웹페이지, 파일, 이메일 주소 등으로 연결하는 링크를 생성하는 태그</p>
+            <a href="https://www.naver.com/">네이버로 이동하기</a>
+
+            <hr>
+            <h3>이미지와 하이퍼링크 동시 사용</h3>
+            <p> 설명 : a 요소 안에 img 요소를 넣어 이미지를 클릭하면 이동되도록 사용 가능</p>
+            <a href="https://www.naver.com/">
+                <img src="./고양이.jpg" alt="고양이">
+            </a>
+            
+            <hr>
+            <section id="list">
+                <h3>3) 목록 요소</h3>
+                <p>목록들을 나타내는 태그 종류</p>
+
+                <h3>&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;</h3>
+                <p> ul 설명 : 순서 없는 목록</p>
+                <p> ol 설명 : 순서 있는 목록</p>
+                <p> li 설명 : 항목</p>
+                
+                순서 없는 목록 
+                <!-- 표시 : ● -->
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+
+                순서 있는 목록
+                <!-- 표시 : 1.(기본값) ex. type="A" 사용으로 변경 가능-->
+                <ol type="A">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ol>
+
+                <hr>
+                <h2>&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt; 정의 목록</h2>
+                <P>dl 설명 : 정의 목록 태그</P>
+                <P>dt 설명 : 용어를 나타내는 태그</P>
+                <P>dd 설명 : 설명을 나타내는 태그</P>
+
+                <!-- dl 안에 dt 용어 그 안에 dd 사용 -->
+                <dl>
+                    <dt>HTML</dt>
+                    <dd>문서의 구조와 의미를 표현하는 마크업 언어</dd>
+                    <dt>HTTP</dt>
+                    <dd>웹에서 데이터를 주고 받는 프로토콜</dd>
+                </dl>
+            </section>
+
+            <hr>
+            <section id="audio-video">
+                <h3>&lt;audio&gt;, &lt;video&gt; 오디오 및 비디오</h3>
+                <p> 설명 : 미디어 재생을 위한 태그</p>
+
+                <audio controls>
+                    <source src="test.mp3" type="audio/mpeg">
+                </audio>
+
+                <video controls width="320">
+                    <source src="test.mp4" type="video/mp4">
+                </video>
+            </section>
+
+            <hr>
+            <section id="table">
+                <h2>테이블 요소</h2>
+                <p>엑셀처럼 테이블을 표현할 수 있는 태그</p>
+
+                <h3>&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;</h3>
+                <p>table 설명 : 웹 페이지에서 테이블을 만들 때 사용</p>
+                <p>tr 설명 : 한 개의 행을 만드는 태그</p>
+                <p>th 설명 : 행에 데이터를 넣을 때 사용되는 태그(제목 용도)</p>
+                <p>td 설명 : 행에 데이터를 넣을 때 사용되는 태그</p>
+
+                <table border="1">
+                    <!-- thead: 표에서 헤더(제목) 영역을 나타냄-->
+                    <thead>
+                        <tr>
+                            <th>이름</th>
+                            <th>과목</th>
+                            <th>점수</th>
+                        </tr>
+                    </thead>
+                    <!-- tbody: 표에서 데이터 영역을 나타냄 -->
+                    <tbody>
+                        <tr>
+                            <td>김철수</td>
+                            <td>HTML</td>
+                            <td>90</td>
+                        </tr>
+                        <tr>
+                            <td>짱구</td>
+                            <td>HTML</td>
+                            <td>70</td>
+                        </tr>
+                        <tr>
+                            <td>노라</td>
+                            <td>HTML</td>
+                            <td>80</td>
+                        </tr>
+                    </tbody>
+                    </table>
+            </section>
+
+            <hr>
+            <section id="form-ele">
+                <h2>폼 요소</h2>
+                <p>사용자 입력을 전송시키는 역할</p>
+
+                <form action="#">
+                    <!-- label : '아이디 :'를 클릭시 input을 활성화시켜주는 장치 -->
+                    <label for="user-name">아이디 :</label>
+                    <!-- placeholder : 칸 안에 어떤 걸 입력하는지 미리 표시해주는 입력장치 -->
+                    <input type="text" id="user-name" placeholder="아이디를 입력하세요.">
+                    <!-- readOnly : 입력불가 , disabled : 클릭 비활성화 -->
+
+                    <br>
+                    <label for="user-password">비밀번호</label>
+                    <input type="password" id="user-password" placeholder="비밀번호를 입력하세요." value="123" 
+                           maxlength="8" required>
+
+                    <br>
+                    <button type="submit">전송</button>
+                    <button type="reset">초기화</button>
+                </form>
+
+                <input type="checkbox">
+                <input type="date">
+                <input type="datetime">
+                <input type="number">
+
+            </section>
+
+        </section>
+        
+    </main>
+
+</body>
+</html>
