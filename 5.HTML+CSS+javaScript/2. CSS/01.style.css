@@ -59,10 +59,9 @@ h2 ~ ul {
 
 
 /* 반응 선택자 
-    [상태]
     hover : 마우스를 버튼에 올릴 때
     active : 마우스를 클릭할 때
-    focus : 마우스가 포커싱 된 상태일때 반영됨.
+    focus[상태선택자] : 마우스가 포커싱 된 상태일때 반영됨.
 */
 .reaction-btn:hover {
     background-color: antiquewhite;

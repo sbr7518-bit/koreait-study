@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포지션</title>
+    <style>
+        #parent {
+            width: 130px;
+            height: 70px;
+            background-color: gainsboro;
+
+            position: relative; 
+        }
+
+        .absolute-box {
+            width: 50px;
+            height: 50px;       
+            position: absolute; 
+        }
+
+        .box1 {
+            top: 0px;
+            left: 0px;
+            background-color: aqua;
+        }
+
+        .box2 {
+            top: 20px;
+            left: 30px;
+            background-color: red;
+            z-index: 2;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="absolute-box box1"></div>
+        <div class="absolute-box box2"></div>        
+    </div>
+</body>
+</html>

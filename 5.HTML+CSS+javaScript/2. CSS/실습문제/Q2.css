@@ -1,0 +1,53 @@
+body {
+    margin: 0px;
+    background-color: #f5f7fa;
+    color: #222;
+}
+
+.box1 {
+    margin: 10px 5px 10px 5px ;
+    border: 1px solid gray;
+    background-color: #ffff;
+ 
+}
+
+.box2 {
+    margin: 10px 5px 10px 5px ;
+    border: 1px solid gray;
+    background-color: #ffff;
+    
+}
+
+.box3 {
+    margin: 10px 5px 10px 5px ;
+    border: 1px solid gray;
+    background-color: #ffff;
+    
+}
+
+div {
+    margin: 10px 5px 10px 5px ;
+    font-weight: bold;
+}
+
+.blue {
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+    color: blue;
+}
+
+.box1 p a{
+    font-weight: bold;
+    color: green;
+}
+
+.box2 p a{
+    font-weight: bold;
+    color: orange;
+}
+
+.box3 p a{
+    font-weight: bold;
+    color: red;
+}
