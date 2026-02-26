@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Footer</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .container {
+            margin: 0 ;
+            padding: 0 10px;
+        }
+
+        /* 강조 */
+        .strong {
+            font-weight: bold;
+        }
+
+        /* 상단 */
+        .footer-top {
+            border-top: 1px solid #eee;
+            padding:  12px 0;
+        }
+
+        .footer-top-inner{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;;
+            gap: 16px;
+        }
+
+        .footer-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .footer-links a{
+            text-decoration: none;
+            color: #444;
+            font-size: 13px;
+            white-space: nowrap;            
+        }
+
+        /* 링크 사이 구분선 */
+        .footer-links a + a{
+            border-left: 1px solid #ccc;
+            padding-left: 16px;
+        }
+
+        .family {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .family-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* 중단 */
+        .footer-mid  {
+            border-top: 1px solid #eee;
+            padding:  18px 0;
+
+        }
+        /* 하단 */
+        .footer-bottom {
+            border-top: 1px solid #eee;
+            padding:  18px 0 26px;
+        }
+    </style>
+</head>
+<body>
+    <footer class="footer">
+        <!-- 상단 라인 -->
+        <div class="footer-top">
+            <div class="container footer-top-inner">
+                <nav class="footer-links">
+                    <a href="#">서비스소개</a>
+                    <a href="#">채용 정보</a>
+                    <a href="#">이용약관</a>
+                    <a href="#" class="strong">개인정보처리방침</a>
+                    <a href="#">청소년보호정책</a>
+                    <a href="#">전자금융거래약관</a>
+                    <a href="#">제휴·광고</a>
+                </nav>
+
+                <div class="family">
+                    <label class="family-label">패밀리 사이트</label>
+                    <select class="family-select">
+                        <option>선택하세요</option>
+                        <option>site A</option>
+                        <option>site B</option>
+                    </select>                    
+                </div>
+            </div>
+        </div>
+
+        <!-- 중간 라인 -->
+        <div class="footer-mid">
+            <div class="container footer-mid-inner">
+                <div class="Company">
+                    <p class="strong">하루드림<p>
+                    <p>주소 : 서울특별시 송파구 가락로 84, 7층 705-Q091호(석촌동,서원빌딩)</p>
+                    <p>대표 : 김재섭</p>
+                    <p>사업자등록번호 : 306-36-08063 <a href="#" class="blue">사업자정보확인</a></p>
+                </div>
+
+                <div class="pill-buttons">
+                    <a href="#" class="pill">사업자정보 확인</a>
+                    <a href="#" class="pill">통신판매업 신고</a>
+                    <a href="#" class="pill">개인정보 보호책임자</a>
+                </div>
+
+                <div class="cs">
+                    <p class="strong">고객센터<p>
+                    <p><b>Tel</b> : 1500-0000</p>
+                    <p><b>Fax</b> : 02-000-0000</p>
+                    <p><b>Mail</b> : help@harudream.com</p>
+                    <p>운영시간 :평일 09:00 ~ 18:00(점심 12:00~13:00)</p>
+                    <p>1:1 문의 : <a href="#" class="blue">문의 접수</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 하단 라인 -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>드림은 통신판매중개자이며 통신판매의 당사자가 아닙니다. 따라서 하루드림은 상품·거래 정보 및 가격에 대해 책임을 지지 않습니다.</p>
+                <p>본 사이트의 모든 정보, 콘텐트, UI 등에 대한 무단 복제·전송·배포·스크래핑 행위는 금지됩니다. <a href="#">콘텐츠산업 진흥법에 따른 표시</a></p>
+                <p class="Copyright">Copyright © HaruDream Inc. All rights reserved.</p>
+            </div>
+
+            <div class="brand">
+                <b>HaruDream</b>
+                <div><small>UI Clone Practixe</small></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
