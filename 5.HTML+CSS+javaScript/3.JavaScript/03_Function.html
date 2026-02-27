@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="add(10,10)">10 + 10</button>
+    <script>
+        function add(num1, num2) {
+            // alert : 화면에 메시지 창 띄어주는 변수
+            alert(num1 + num2);
+        }
+
+    </script>
+
+    <!-- 
+        1. 사용자 입력 받는 건 prompt() 사용
+        2. 버튼 클릭하면 함수 호출
+            ex. onclick="Q1()"
+    -->
+    <hr>
+    <button onclick="Q1()">Q1 </button>
+    <script>
+        function Q1() {
+            let birthYear = parseInt(prompt("출생연도 입력 : "));
+            let age = 2026 - birthYear;
+
+            alert("당신의 나이는" + age + "세 입니다.");
+        }
+    </script>
+
+    <!-- 국어, 영어, 수학 점수를 입력받아 평균을 계산하여 출력하세요. -->
+    <hr>
+    <button onclick="Q2()">Q2 </button>
+    <script>
+        function Q2() {
+            let kuk = parseInt(prompt("국어점수 입력 : "));
+            let eng = parseInt(prompt("영어점수 입력 : "));
+            let suh = parseInt(prompt("수학점수 입력 : "));
+            
+            let avg = (kuk+eng+suh) / 3;
+
+            alert("평균 점수는 " + avg + "입니다.");
+            
+        }        
+    </script>
+
+    <!-- 나이를 입력받아 19세 이상이면 "성인" 19세 미만이면 "미성년자"를 출력 -->
+    <hr>
+    <button onclick="Q3()">Q3 </button>
+    <script>
+        function Q3(){
+            let age = parseInt(prompt("나이를 입력하세요 : "));
+
+            if(age >= 19) {
+                alert ("성인입니다.");
+            } else {
+                alert ("미성년자입니다.");
+            }
+        }
+    </script>
+    
+    <!-- 두개의 숫자를 입력받아 더 큰 숫자를 출력하세요 -->
+    <hr>
+    <button onclick="Q4()">Q4 </button>
+    <script>
+        function Q4() {
+            let num1 = parseInt(prompt("숫자를 입력하세요 : "));
+            let num2 = parseInt(prompt("숫자를 입력하세요 : "));
+
+            if (num1 > num2) {
+                alert("더 큰 숫자는 " + num1 + "입니다.");
+            } else if (num1 < num2) {
+                alert("더 큰 숫자는 " + num2 + "입니다.");
+            }
+        }
+    </script>
+
+    <!-- 숫자 1개를 입력받아 짝수인지 홀수인지 출력하세요-->
+    <hr>
+    <button onclick="Q5()">Q5 </button>
+    <script>
+        function Q5() {
+            let number1 = parseInt(prompt("숫자를 입력하세요 : "));
+
+            if(number1%2 ===0) {
+                alert("짝수입니다.");
+            } else {
+                alert("홀수입니다.");
+            }
+        }
+    </script>
+
+    <!-- 사용자가 입력한 구구단을 출력하세요 (ex. 2 입력하면 2단 출력) -->
+    <hr>
+    <button onclick="Q6()">Q6 </button>
+    <script>
+        function Q6() {
+            let dan = parseInt(prompt("단을 입력하세요 : "));
+
+            console.log(dan + "단 출력");
+
+            for(let i=1; i<=9; i++) {
+                let result = dan * i;
+                console.log(dan + "*" + i + "=" +result);
+            }
+        }
+    </script>
+
+    <!-- 숫자 1개를 입력받아 1부터 N까지의 합을 계산하고 출력 -->
+    <hr>
+    <button onclick="Q7()">Q7 </button>
+    <script>
+        function Q7(){
+            let n = parseInt(prompt("숫자(N) 입력하세요 : "));
+            let sum = 0;
+
+            for(let i = 1; i<= n; i++) {
+                sum += i;
+            }
+            console.log("1부터" + n + "까지의 합은" + sum + "입니다.");
+            alert("총합: "+ sum);
+        }
+    </script>
+
+    <!-- 사용자로부터 이름을 입력받아 Alice일 경우 "다시 돌아오신걸 환영합니다." 출력
+         bob일 경우 "안녕히가세요!" 출력
+         그 외에는 "[이름]님 어서오세요!" 출력
+    -->
+    <hr>
+    <button onclick="Q8()">Q8 </button>
+        <script>
+        function Q8(){
+            let name = prompt("이름을 입력하세요 : ");
+
+            if(name === "Alice") {
+                alert("다시 돌아오신걸 환영합니다.");
+            } else if (name === "bob") {
+                alert("안녕히가세요!");
+            } else {
+                alert(name + "님 어서오세요!");
+            } 
+        }
+    </script>
+    
+
+
+
+
+
+    <script>
+        // function calc() {
+        //     //parse~ -> 타입 변환 시켜줌
+        //     let num1 = parseInt(prompt("첫 번째 숫자 입력 :"));
+        //     let num2 = parseInt(prompt("두 번째 숫자 입력 :"));
+        //     let operation = prompt("원하는 연산 입력(+, -, *, /) :");
+
+        //     let result;
+
+        //     switch(operation) {
+        //         case "+" :
+        //             result = num1 + num2;
+        //             break;
+        //         case "-" :
+        //             result = num1 - num2;
+        //             break;
+        //         case "*" :
+        //             result = num1 * num2;
+        //             break;
+        //         case "/" :
+        //             if(num1 !== 0 && num2 !== 0) {
+        //                 result = num1 / num2;
+        //             }
+        //             break;
+        //         default :
+        //             console.log("잘못된 연산입니다.")
+        //     }
+        //     console.log("계산된 결과는" + result + "입니다.");
+        // }
+
+        // calc();
+    </script>
+</body>
+</html>

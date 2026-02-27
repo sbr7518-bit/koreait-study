@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>virtualClass</title>
+    <style>
+        .button {
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: aquamarine;
+        }
+
+        /* 버튼 클릭했을 때 방향축 지정시 그 방향으로 버튼이 이동*/
+        .button:active {
+            transform: translateY(50px);
+        }
+
+
+        /* 가상클래스 선택자 : link(이동 전) & visited(이동 후) */
+        a:link {
+            color: red;
+            font-weight: bold;
+        }
+
+        a:visited {
+            color: black;
+            font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body>
+    <button class="button">클릭</button>
+
+    <a href="https://www.google.co.kr/">이동</a>
+</body>
+</html>

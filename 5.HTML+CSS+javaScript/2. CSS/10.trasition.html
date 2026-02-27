@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trasition</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: burlywood;
+            /* 어떤 값을 바꿀건지 선택 */
+            transition-property: width, background-color;
+            /* 속도 조정 */
+            transition-timing-function: ease;
+            /* 몇 초에 걸쳐 이동할 것인지 조정 */
+            transition-duration: 3s;
+            /* hover 상태일 때 몇 초 뒤에 시작할지 조정 */
+            transition-delay: 5s;            
+        }
+
+        div:hover {
+            width: 500px;
+            background-color: aquamarine;
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

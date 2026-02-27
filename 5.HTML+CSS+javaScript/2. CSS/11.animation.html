@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            /* animation-name: grow;
+            animation-duration: 5s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: 5; */
+
+            /*  일정 간격으로 돌리기 (처음엔빠르게 나중엔 천천히) */ 
+            animation: grow 2s ease-in-out infinite;
+            /* animation: grow 2s linear 5; */
+        }
+
+        /* 
+            transform
+                1. scale : 크기 변화
+                    > 기본값 1 (원래크기)
+                    > ex) transform : scale(1.5)
+                    - scaleX : X축(좌우) 크기 변화
+                    - scaleY : Y축(위아래) 크기 변화
+
+                2. rotate : 회전
+                    > ex) transform : rotate(180deg)
+
+                3. translate : 이동
+                    > translate(100px) : x축으로 100px 이동
+                        translateX와 동일하게 동작 (X축이 기본값)
+                    > translateY(200px) : y축으로 200px 이동 
+
+                4. skew : 기울기
+                    >skew(180deg) : 180도 기울기
+
+                5. opacity : 투명도
+                    >opacity: 0.5;  -> 투명도 0.5
+                        최소 0, 최대 1
+        */
+
+        @keyframes grow {
+            0% {
+                transform: skew(0deg);
+                opacity: 0;
+                background-color: blue;
+            }
+            50% {
+                transform: skew(180deg);
+                opacity: 1;
+                background-color: black;
+            }
+            100% {
+                transform: skew(360deg);
+                opacity: 0;
+                background-color: red;
+            }
+        }
+
+        button:active{
+            transform: translateY(300px)
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            animation: combo 5s linear infinite;
+
+        }
+
+        @keyframes combo {
+            0% { 
+                transform: translateX(0) rotate(0deg) scale(1);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(200px) rotate(360deg) scale(1.5);
+                opacity: 1;
+            }
+
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="box1"></div>
+    
+    <button>여기를 클릭하세요!!!</button>
+
+    <hr>
+    <div class="box2"></div>
+
+
+
+
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

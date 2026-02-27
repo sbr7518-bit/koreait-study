@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+</head>
+<body>
+    <script>
+        var a = "var 변수";
+        let b = "let 변수";
+        const c = "const 변수";
+
+        var a = 1; //중복 선언 가능 (let, const는 에러가 뜸, 중복선언불가)
+
+
+        console.log(a);
+        console.log(b);
+        console.log(c);
+
+        // 외부 변수 참조 (메서드 호출)
+        //  - var : 함수 스코프
+        //  - let, const : 블록 스코프 (선언된 {} 외부에서는 사용 불가-)
+        function example() {
+            var num1 = 1;
+            let num2 = 2;
+            const num3 = 3;
+
+            if(true) {
+                var num1 = 100;
+                let num2 = 200;
+                const num3 = 300;
+
+                console.log(num1,num2,num3);
+                // -> 100,200,300 으로 나옴 
+            }
+
+            console.log(num1,num2,num3);
+            // -> var는 모든 함수에 반영이 되기 때문에 블록스코프가 종료 된 200,300은 사라지고 
+            //    function 안에 있는 함수들로 반영된다. (var는 이미 반영된 100으로 들어감)
+            //      > 100, 2, 3
+        }
+        example();
+
+        // 호이스팅 가능 : 자바 스크립트 맨 위에다 변수를 생성 한다.
+        // (호출하며 값을 초기화 시키기 때문에 결과는 undefined로 출력됨)
+        console.log(num4);
+        var num4 =10;
+        console.log(num4);
+
+        // console.log(num5); -> 에러가 발생 (호이스팅 불가)
+        let num5 =10;
+        console.log(num5);
+
+        // 호이스팅 불가
+        const num6 = 10;
+        console.log(num6)
+
+        // const : 상수이기 때문에 값 변경 불가
+        num6 = 20;
+
+    </script>
+</body>
+</html>
