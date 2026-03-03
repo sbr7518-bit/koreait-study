@@ -36,11 +36,11 @@
     <button onclick="Q2()">Q2 </button>
     <script>
         function Q2() {
-            let kuk = parseInt(prompt("국어점수 입력 : "));
+            let kor = parseInt(prompt("국어점수 입력 : "));
             let eng = parseInt(prompt("영어점수 입력 : "));
-            let suh = parseInt(prompt("수학점수 입력 : "));
+            let mat = parseInt(prompt("수학점수 입력 : "));
             
-            let avg = (kuk+eng+suh) / 3;
+            let avg = (kor+eng+mat) / 3;
 
             alert("평균 점수는 " + avg + "입니다.");
             
@@ -150,15 +150,16 @@
 
 
 
-    <script>
+    <!--    <script>
+
         // function calc() {
         //     //parse~ -> 타입 변환 시켜줌
         //     let num1 = parseInt(prompt("첫 번째 숫자 입력 :"));
         //     let num2 = parseInt(prompt("두 번째 숫자 입력 :"));
         //     let operation = prompt("원하는 연산 입력(+, -, *, /) :");
-
+            
         //     let result;
-
+            
         //     switch(operation) {
         //         case "+" :
         //             result = num1 + num2;
@@ -181,6 +182,162 @@
         // }
 
         // calc();
+    </script> -->
+    <!-- ------------------------------------------------------------------------- -->
+
+    <hr>
+
+
+    <script>
+        // 1. 일반 함수
+        //  - 가장 일반적으로 사용되는 함수
+        //  - 호이스팅 가능
+
+        func1("hi");
+        function func1(str) {
+            console.log(str);
+        }
+
+        // 2. 익명 함수
+        //  - 이름이 없는 함수
+        //  - 자주 쓰이는 곳 : 이벤트 처리, 콜백, 클로저, ...
+        const func2 = function(str) {
+            console.log(str);
+        }
+
+        // 3. 화살표 함수
+        //  - 코드의 라인을 줄이기 위해 사용
+        //  - this 바인딩 방식과 객체 생성, 구조 등이 일반 함수와 다름
+        const func3 = (num1, num2) => num1 + num2;
+        
+        //  - 매개변수가 1개일 때 : 소괄호 생략 가능
+        const square = num1 => num1 * num1;
+        
+        //  - 매개변수가 없을 때 : 비어있는 소괄호만 작성
+        const printHellow = () => "Hello";        
+        console.log(printHellow);  // -> () => "Hello" 그대로 출력 돔.
+        console.log(printHellow()); // -> "Hello" 만 출력
+        console.log(typeof printHellow);  // -> 타입이 반환 : function
+        
+        //  - 여러줄 작성할 때 : 중괄호 사용
+        const add2 = (num1, num2) => {
+            let result = num1 + num2;
+            return result;
+        }
+
+
+        // 4. 생성자 함수
+        //  - 객체를 생성하여 재사용하기 위해 사용 (console.log(p1.name <- 재사용))
+        //  - 관례적으로 생성자 함수는 앞 글자를 대문자로 표시 (person X , Person O)
+
+        function Person(name,age) {
+            this.name = name;
+            this.age = age;
+            this.walk = function() {
+                console.log(this.name + " 걷는 중");
+            }            
+        }
+
+        const p1 = new Person("김재섭", 19);
+        const p2 = new Person("홍길동", 22);
+
+        console.log(p1);
+        console.log(p2);
+
+        console.log(p2.age);
+        p2.walk();
+
+
+        //  5. 내부함수와 재귀함수
+        //   - 내부 함수 : 함수 안에 또 다시 정의된 함수
+        //   - 재귀 함수 : 자기 자신을 호출하는 함수
+
+        // 내부 함수  (함수안에 또 함수)  = 비동기 통신할 때 사용
+        function outer() {
+            let x = 10;
+
+            function inner() {
+                console.log(x);
+            }
+            inner();
+        }
+        outer();
+
+        // 재귀 함수 (자기 자신을 호출)
+        function countdown(cnt) {
+            if (cnt === 0) {
+                console.log("0이 되었습니다.");
+            } else {
+                console.log(cnt);
+                countdown(cnt-1);  // <- 재귀 호출 부분. 
+            }
+        }
+
+        //  6. 콜백 함수
+        //   - 매개변수에 함수가 들어오는 방식
+        function first(callback) {
+            console.log("First");
+
+            if(typeof callback === "function") {
+                callback();
+            }
+        }
+
+        // 함수를 호출할 때 인자로 함수를 전달
+        first(function() {
+            console.log("Second");
+        }) 
+
+        // first를 실행할 때 위에 있는 callback함수로 넘어가 그 안에 있는 함수를 실행. 
+        // function이 나오면 callback 함수를 호출하겠다는 내용.
+
+        // ==========================================
+
+        function processUser(name, callback) {
+            console.log("--- 요청 시작 ---");
+            //console.log(name + "님 어서오세요.");
+            callback(name);
+            console.log("--- 요청 종료 ---");            
+        }
+        
+        // 1) 개발자 A는 "000님 환영합니다."  출력.
+        processUser("김재섭", function(name) {
+            console.log(name + "님 환영합니다.");
+        })
+
+        // 2) 개발자 B는 "000님이 로그인하셨습니다." 출력
+        //  - 함수 미리 만들고 전달하기
+        function developerB(name) {
+            console.log(name + "님이 로그인하셨습니다.");
+        }
+
+        processUser("홍길동", developerB);
+
+        // 3) 개발자 C는  "접속 완료!" 출력
+        //  - 화살표 함수로 표현하기
+        processUser("철수", (name) => {
+            console.log("접속완료!");
+        })
+
+        // 예제)
+        function calc(a, b, operation) {
+            return operation(a,b);
+        }
+
+        // 1) 더하는 기능을 가진 함수
+        //   - ex. 3 + 4
+        calc(3,4, function(a,b) {
+            console.log(a+b);
+        })
+
+        // 2) 곱하는 기능을 가진 함수
+        //   - ex. 10*6
+        calc(10,6, function(a,b) {
+            console.log(a*b);
+        })
+
+
     </script>
+
 </body>
 </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장 함수</title>
+</head>
+<body>
+    <script>
+        // 문자열 관련 내장 함수
+
+        // 1. 문자열.toUpperCase()
+        //  - 모든 문자를 대문자로 변환
+        let helloworld_1 = "Hello, World";
+        console.log("toUpperCase() : " + helloworld_1.toUpperCase());
+
+        // 2. 문자열.toLowerCase()
+        //  - 모든 문자를 소문자로 변환
+        let helloworld_2 = "Hello, World";
+        console.log("toLowerCase() : " + helloworld_2.toLowerCase());
+        
+        // 3. 문자열.length  -> () 가 붙지 않아 변수로 침.
+        //  - 문자열의 길이 반환  (글자 길이, 공백 포함 : 13)
+        let helloworld_3 = "Hello, World";
+        console.log("length : " + helloworld_3.length);
+
+        // 4. 문자열.charAt(index)  
+        //  - 특정 인덱스에 있는 문자 반환  -> 글자 하나를 인덱스 0~13으로 지정하고 출력.
+        let helloworld_4 = "Hello, World";
+        console.log("charAt : " + helloworld_4.charAt(3));  // -> "l" 출력
+
+        // 5. 문자열.indexOf("문자")
+        //  - 특정 문자가 처음으로 등장하는 인덱스 변환   --> "2"를 출력 (0~2)
+        //  - 특정 문자가 없으면 -1 반환
+        //   (특정문자가 있냐 없냐를 확인할 때 사용)
+        //  - lastIndexOf("문자") : 특정 문자가 마지막으로 등장하는 인덱스 반환
+        let helloworld_5 = "Hello, World";
+        console.log("indexOf('문자') : " + helloworld_5.indexOf("l"));
+
+        // 6. 문자열.substring(start, end)   --> "lo" 출력
+        //  - 문자열의 일부를 추출하여 새로운 문자열 반환
+        let helloworld_6 = "Hello, World";
+        console.log("substring(start, end) : " + helloworld_5.substring(3, 5));        
+        
+        
+        // 수학 관련 내장 함수 (Math)
+
+        // 1. Math.abs()
+        //  - 절댓값 반환
+        console.log("Math.abs() : " + Math.abs(-55)); // 55
+
+        // 2. Math.random()
+        //  - 0과 1 사이의 난수 반환
+        console.log("Math.random() : " + Math.random()); // ex.0.47121928240481004 ~ (랜덤)
+        
+        // 3. Math.round()
+        //  - 소수점 반올림
+        console.log("Math.round() : " + Math.round(123.456)); // 123
+
+        // 4. Math.ceil()
+        //  - 소수점 올림
+        console.log("Math.ceil() : " + Math.ceil(123.456)); //124
+
+        // 5. Math.floor()
+        //  - 소수점 내림
+        console.log("Math.floor() : " + Math.floor(123.456)); //123
+
+        // 6. Math.sqrt()
+        //  - 제곱근 반환
+        console.log("Math.sqrt() : " + Math.sqrt(4)); //2        
+
+
+    </script>
+</body>
+</html>

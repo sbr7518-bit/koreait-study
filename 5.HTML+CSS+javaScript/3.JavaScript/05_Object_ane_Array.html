@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 바구니</title>
+</head>
+<body>
+    <script>
+        // 객체 : 키-값 쌍으로 이루어진 데이터 구조
+        let student = {
+            name : "김재섭",
+            age : 19,
+            grade : "B"   // 같은 키를 가질 수 없다. 만약 사용한다면 기본 값에 덮어씌어짐.
+        }
+
+        console.log(student);
+        console.log(student.name);  // 자바스크립에서 주로 사용.
+        console.log(student["name"]);  // [] 안에 변수를 쓸 수 있다.
+
+        // 추가
+        student.addr = "인천"; // addr라는 키를 가진 값("인천")을 추가.
+        console.log(student);
+
+        // 수정  
+        student.addr = "서울"; // addr라는 키가 이미 존재하기 때문에 값이 수정된다.
+        console.log(student);
+
+        // 삭제
+        delete student.grade // grade 키를 가진 요소 삭제.
+        console.log(student);
+
+        // JSON 타입 변환
+        let person = {
+            name : "홍길동",
+            age : 12,
+            isAdmin : false
+        }
+        console.log("person 타입 : " + typeof person);
+
+        // JSON.stringify (JavaScript -> JSON)
+        //  - JavaScript 객체를 JSON 문자열로 변환
+        //  - 백엔드에 요청을 보낼 때 주로 사용
+        let person_json = JSON.stringify(person);
+        console.log(person_json);  //  string타입(문자열)으로 출력
+        console.log(person);  // object로 출력
+
+        console.log("person_json 타입 : " + typeof person_json);
+
+        // JSON.parse (JSON -> JavaScript)
+        //  - JSON 문자열을 JavaScript 객체로 변환
+        //  - 백엔드로부터 온 응답 데이터를 다룰 때 주로 사용.
+        let person_parse = JSON.parse(person_json);
+        console.log(person_parse);
+
+        // ==============================================================
+
+        // 객체 메서드
+        let obj = {
+            name : "홍길동",
+            age :19,
+            addr : "인천"
+        }
+
+        //  키  -> 객체의 모든 키를 배열로 반환
+        const keys = Object.keys(obj);  
+        console.log(keys)
+
+        //  값  -> 객체의 모든 값을 배열로 반환
+        const values = Object.values(obj);
+        console.log(values)
+
+        //  키-값   -> 객체의 모든 키-값 쌍을 배열로 반환
+        const entries = Object.entries(obj);
+        console.log(entries)
+
+//  ============================================================
+
+        // 배열
+        //  - 순서가 있는 데이터 구조
+        let scores = [90, 85, 88];
+        console.log(scores[1]);  // 1번 인덱스 요소에 접근
+
+        // 새로운 값 추가
+        // push()
+        //  - 배열의 끝에 값을 추가
+        scores.push(10);
+        console.log(scores);
+
+
+        // pop()
+        //  - 마지막 요소 제거 후 제거한 값 반환  -> 10을 추가하므로써 마지막 요소가 되었고, 그걸 제거하면서 그 값을 반환
+        let removeValue = scores.pop();
+        console.log(removeValue);   //  -> '10'을 출력
+
+        // forEach()
+        //  - 반복문을 조금 더 쉽게 사용할 수 있는 메서드
+        let arr = ["a", "b", "c"];
+
+        arr.forEach((item) => console.log(item));  // -> 배열 안에 있는 요소들을 순차적으로 출력.
+
+        // map()
+        //  - 요소를 하나씩 꺼내가며 정의한 함수 실행 후 새로운 배열 반환
+        //  - 계산한 값을 반환할 때 사용
+        let numbers = [10, 20, 30];
+
+        let resultMap = numbers.map((value) => value += 100);
+
+        console.log(resultMap);
+
+        // filter()
+        //  - 요소를 하나씩 꺼내가며 정의한 함수 실행 후 새로운 배열 반환
+        //  - 조건에 충족하는 요소만 반환
+        let resultFilter = numbers.filter((value) => value >= 15);   // 값이 15이상인 값만을 출력  = 20,30 만 출력됨.
+        console.log(resultFilter);
+
+        // sort()
+        //  - 배열을 정렬 시켜주는 메서드
+        //  - a-b는 오름차순 정렬, b-a는 내림차순 정렬
+        let nums = [1, 5, 3, 4, 6, 8, 9, 4];
+
+        let resultSort = nums.sort((a,b) => a-b); 
+        console.log(resultSort);
+
+        
+        // ===============================================================
+
+        // students[1].age <- 이런식으로 사용
+        let students =[
+            {
+                name: "김재섭",
+                age: 19
+            },
+            {
+                name: "홍길동",
+                age: 22
+            },            
+            {
+                name: "철수",
+                age: 5
+            }
+        ]
+
+        console.log(students);
+        // 홍길동 출력
+        console.log(students[1].name);
+
+        
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

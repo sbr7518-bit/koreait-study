@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q1_DOM</title>
+</head>
+<body>
+    
+    <h3>Q1. 사용자의 이름을 입력받고 확인 버튼을 누르면  "000님 환영합니다."를 alert로 출력</h3>
+    <input type="text" id="userId">
+    <button onclick="nameId()">확인</button>
+    <script>
+        function nameId() {
+            let userId = document.getElementById("userId").value;
+            alert(userId + "님 환영합니다.");
+        }
+    </script>
+    <hr>
+
+    
+
+    <h3>Q2. 구구단 몇단을 출력할지 입력받고 확인 버튼을 누르면 div 태그에 결과 출력</h3>
+    <input type="text" id="q2-dan">
+    <button onclick="dan()">확인</button>
+    <div id="gugudan"></div>
+    <script>
+        function dan() {
+            let danvalue = document.getElementById("q2-dan").value;
+            let result = document.getElementById("gugudan");
+            let danNumber = Number(danvalue);
+
+            //  유효성 검사 : 숫자가 아니거나 비어있으면 중단
+            if (danvalue === "" || isNaN(danNumber) ) {
+                resultDiv.textContent = "숫자를 입력하세요.";
+                resultDiv.style.color = "red";
+                return;
+            }
+
+            //  구구단 생성
+            result.innerHTML = "";
+
+            for(let i=1; i<=9; i++) {
+                result.innerHTML += "<div>" + danNumber + "x" + i + " = " + (danNumber*i)+ "</div>";
+            }
+        }
+    </script>
+    <hr>
+
+    <h3>Q3. 사용자의 이름과 나이를 입력받고 확인 버튼을 누르면 환영 메시지 출력</h3>
+    <p>18세 미만 : "000님 안녕하세요! 미성년자 분이시군요."</p>
+    <p>18세 이상 : "000님 안녕하세요! 성인 분이시군요."</p>
+    <p style="color: red">* 나이에 숫자를 입력하지 않을 경우 "나이를 숫자로 입력하세요." 출력</p>
+    <p style="color: red">* isNaN()을 찾아서 활용해보기</p>
+    <input type="text" id ="q3-name" placeholder="이름">
+    <input type="text" id ="q3-age" placeholder="나이">
+    <button onclick="age()">확인</button>
+    <div id="q3-result"></div>
+    
+    <script>
+        function age() {
+            let name = document.getElementById("q3-name").value;
+            let ageValue = document.getElementById("q3-age").value;
+            let age = Number(ageValue);
+            let result = document.getElementById("q3-result");
+
+            if(isNaN(age) || ageValue === "") {
+                result.textContent = "숫자를 입력하세요.";
+                return;
+            }
+            if(age < 19) {
+                result.textContent = name + "님 안녕하세요! 미성년자 분이시군요.";
+            } else {
+                result.textContent = name + "님 안녕하세요! 성인 분이시군요.";
+            }           
+        }
+    </script>
+
+    <hr>
+
+    <h3>Q4. 사용자로부터 숫자 1개를 입력받아 확인 버튼을 누르면 홀수인지 짝수인지 판별하기</h3>
+    <P>짝수라면 "입력한 숫자는 짝수입니다."를 red 색상으로</P>
+    <P>홀수라면 "입력한 숫자는 홀수입니다."를 blue 색상으로</P>
+    <input type="text" id ="number">
+    <button onclick="number()">확인</button>
+    <div id="q4-result"></div>
+    <script>
+        function number() {
+            let numberValue = document.getElementById("number").value;
+            let number = Number(numberValue);
+            let result = document.getElementById("q4-result"); 
+
+            if(isNaN(number) || numberValue === "") {
+                result.textContent = "숫자를 입력하세요.";
+                return;
+            }            
+
+            if(number%2 === 0) {
+                result.textContent = "입력한 숫자는 짝수입니다."
+                result.style.color = 'red';
+            } else {
+                result.textContent = "입력한 숫자는 홀수입니다."
+                result.style.color = 'blue';               
+            }
+
+
+        }
+    </script>
+    <hr>
+
+    <h3>Q5. 사용자로부터 임의의 문자열을 입력받아 길이를 계산하여 출력하고, 역순으로 출력</h3>
+    <p>문자열 역순은 reverse() 찾아서 활용</p>
+    <input type="text" id="q5-text">
+    <button onclick="processtext()">확인</button>
+    
+    <!-- 문자열 길이 -->
+    <div id="q5-length"></div>
+    <!-- 문자열 역순  -->
+    <div id="q5-reverse"></div>
+    <script>
+        function processtext() {
+            let text = document.getElementById("q5-text").value;
+            let lengthDiv = document.getElementById("q5-length");
+            let reverseDiv = document.getElementById("q5-reverse");
+            
+            // 문자열 길이 계산
+            lengthDiv.textContent = "문자열 길이 :" + text.length;
+
+            // reverse() 을 가지고 문자열 뒤집는 공식
+            // 1단계 : .split("") 문자열을 배열 형태로 쪼개줌 (예: ["a","b","c"])
+            // 2단계 : .reverse() 역순 배열
+            // 3단계 : .join("") 문자열 합치기
+            let reversed = text.split("").reverse().join("");
+            reverseDiv.textContent = "역순 문자열 : " + reversed;
+        }
+    </script>
+
+</body>                   
+</html>
