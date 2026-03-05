@@ -101,10 +101,11 @@
 
         // map()
         //  - 요소를 하나씩 꺼내가며 정의한 함수 실행 후 새로운 배열 반환
-        //  - 계산한 값을 반환할 때 사용
+        //  - 계산한 값을 반환(return)할 때 사용
+        //  - 배열 원본에 영향은 주지 않는다. 
         let numbers = [10, 20, 30];
 
-        let resultMap = numbers.map((value) => value += 100);
+        let resultMap = numbers.map((value) => value += 100);  // 값에 +100을 합산 = 110, 120, 130이 출력
 
         console.log(resultMap);
 
@@ -113,6 +114,12 @@
         //  - 조건에 충족하는 요소만 반환
         let resultFilter = numbers.filter((value) => value >= 15);   // 값이 15이상인 값만을 출력  = 20,30 만 출력됨.
         console.log(resultFilter);
+
+        // reduce()
+        //   - 배열을 순회하며 모든 요소의 누적값을 반환하는 함수
+        //   - let scores = [84, 56, 78, 90, 45];
+        //   - let doubledScores = scores.reduce((total, score) => total + score, 0);
+        //   - total : 353 (누적된 값)  => 84+56= 140 -> 140+78= 218 ->218+90= 308 ...
 
         // sort()
         //  - 배열을 정렬 시켜주는 메서드

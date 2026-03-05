@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기</title>
+</head>
+<body>
+    <script>
+
+        console.log("Hello, World!");
+
+        // setTineout은 비동기이기 때문에 3번째로 실행된다.
+        // Web APIs에서 카운트 다운을 하고 있음 -> Task Queue란 곳으로 들어와 작업을 대기한다.
+        // Event Loop이라는 기능이 메인 메서드에 작업이 끝날때까지 대기 중인 작업 가지고 있다가
+        // 작업이 끝나면 대기중인 작업을 그때서야 Stack에 올려준다.
+
+        // 이 작업을 진행하는 것들이 모두 백그라운드에서 진행하고 있음을 알고 있으면 된다. 
+        setTimeout(() => {
+            console.log("Async!!!");
+        }, 3000);
+
+        console.log("go");
+    </script>
+
+    <script>
+        // 콜백 함수
+        function getUserDate(callback) {
+            setTimeout(() => {
+                const userDate = {name:"홍길동", age: 15};
+                callback(userDate);                
+            }, 1000)
+        }
+
+        getUserDate(function(data) {
+            console.log(data);
+        })
+    </script>
+
+    <script>
+        // 호출할 때 마다 다른 동작을 정의하고 싶을 때 사용된다.
+        function printMessage(massage, callback) {
+            callback(massage);
+        }
+
+        printMessage("Hello, JavaScript!", (massage) => {
+            console.log(massage);
+        })        
+
+            function addAndCallback(num1,num2, callback) {
+                // 두 숫자를 더한 결과를 콜백 함수 호출
+                callback(num1 + num2);
+            }
+            
+            addAndCallback(5,10, (sum) => {
+                // 함수 호출 시 실행할 콘솔 로그 출력 코드
+                console.log("덧셈 결과 : " + sum);
+            })
+        </script>
+
+        <script>
+            // 프로미스 (promise)
+            //  - 콜백 지옥을 해결하기 위해 등장한 비동기 처리를 위한 객체
+
+            // 프로미스 메서드
+            //  - (함수) resolve : 작업 성공 시
+            //  - (함수) reject : 작업 실패 시
+
+            // 프로미스 상태
+            //  - pending : 작업이 완료되지 않은 상태 (대기 상태)
+            //  - fulfilled : 작업이 성공적으로 완료된 상태 (완료 상태)
+            //  - rejected : 작업이 실패한 상태 (실패 상태)
+
+            function getUser() {
+                return new Promise((resolve, reject) => {
+                    const user = {name: "홍길동", age: 19};
+                    // resolve(user); // 작업 성공시 user 객체를 던져 주겠다.
+                    
+                    reject("작업 실패!"); // 작업 실패시
+                })
+            }
+
+            getUser()
+                // 작업 성공시 (resolve 호출 시 실행되는 영역)
+                // resolve = .then , (user) = (data)  [(user, 1,2,3) =  (data, num1,num2,num3)]
+                .then((data) => {
+                    console.log(data);
+                })
+
+                // 작업 실패시 .catch
+                .catch((errorMsg) => {
+                    console.error(errorMsg);
+                })
+        </script>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구조분해할당(Destructuring)</title>
+</head>
+<body>
+    <script>
+        const user = {name:"김재섭", age:19, addr: "인천"};
+
+        // 기존방식
+        // const userName = user.name;
+        // const userAge = user.age;
+        
+        // 디스트럭처링 방식 
+        // 변수명은 객체의 키와 동일하게 작성해야 찾아올 수 있다. (username, X)
+        const {name, age, addr} = user;
+        
+        console.log(name);
+        console.log(age);
+        console.log(addr);
+
+        // 배열 구조 꺼내오기
+        // 순서에 맞게 작성 (인덱스에 접근하기 때문에 순서대로 꺼내와야 한다)
+        const animals = [`dog`, `cat`, `pig`];
+        const [a, b, c] = animals;
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        </script>
+</body>
+</html>

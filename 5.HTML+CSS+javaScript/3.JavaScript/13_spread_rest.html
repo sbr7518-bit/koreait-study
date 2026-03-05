@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스프레드 연산자</title>
+</head>
+<body>
+    
+    <script>
+        // 1. 스프레드 연산자 (...~);
+        //   - 배열, 문자열과 같은 반복 가능한 객체를 개별 요소로 분리
+        const numbers = [1, 2, 3, 4, 5];
+        const str = "Hello, World!";
+
+        console.log(...numbers);
+        console.log(...str);
+        
+        // 함수에다 전달해 줄 때 주로 사용
+        function spreadFunc(num1, num2, num3, num4, num5) {
+            console.log(num1);
+        }
+        // 배열의 있는 값이 분리가 되면서 요소를 꺼내 던져줌. 그래서 출력 : 1 이 나온다.
+        spreadFunc(...numbers); // 압축 풀기 같은 용도
+        spreadFunc(1,2,3,4,5);
+
+
+        // 2. 레스트 연산자 (...~);
+        //   - 스프레드 연산자가 요소를 분리하는 거였다면 레스트 연산자는 요소를 하나로 모아주는 연산자
+        const arr = [1,2,3,4,5];
+
+        function restFunc(...numbers) {
+            console.log(numbers);
+        }
+        // 입력한 값을 하나의 배열로 변환해서 출력해줌.
+        // 받는 쪽 : 모아서 , 전달해주는 쪽 : 분리.
+        restFunc(1, 2, 3, 4, 5);
+
+
+        // 3. 배열 병합
+        const arr1 = [10, 20, {name:"김재섭", age:19}];
+        const arr2 = [300, 400, {name:"홍길동", age:22}];
+
+        const mergeArr = [...arr1, ...arr2];
+        console.log(mergeArr);
+
+        mergeArr[0] = 999;
+        mergeArr[2].name = "짱구";
+        mergeArr[3] = 777;
+        mergeArr[5].name = "철수";
+        
+        console.log(arr1); // 얕은 복사로 {} 객체 안에 있는 내용이 변경된다.
+        console.log(mergeArr); // 깊은 복사로 원본에 영향이 감.
+
+
+        </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>(``) 문자기능 구현하기</title>
+</head>
+<body>
+    
+    <script>
+        const name = "신보라";
+        const age = 19;
+
+        const introduce = introduceTag`안녕하세요. 제 이름은 ${name} 이며 나이는 ${age + 20}세 입니다.`;
+        console.log(introduce);
+
+        // Tag : (``)을 함수로 사용하고 싶을 때 쓰는 기능
+        // strings를 배열로 나열 -> 그리고 ${} 함수명 순서대로 입력된다.
+        function introduceTag(strings, name, age) {
+            console.log(strings);
+            console.log(name);
+            console.log(age);
+        }
+
+        const multiLine = `이렇게
+        여러줄도
+        사용
+        가능`;
+
+        console.log(multiLine);
+
+
+
+    </script>
+
+</body>
+</html>
