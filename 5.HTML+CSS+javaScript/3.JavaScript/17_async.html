@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        console.log(1);
+
+        setTimeout(() => {
+            console.log(2);
+        }, 0)
+
+
+        function promiseFunc() {
+            return new Promise((resolve, reject) => {
+                console.log(3);
+                resolve();
+            })
+        }
+
+        async function test() {
+            console.log(4);
+            await promiseFunc();
+            console.log(5);
+        }
+
+        test();
+
+        console.log(6);
+
+        // 출력 순서
+        // TaskQueue : setTimeout  /  MicroTask : promise/ await
+        // main (1) -> TaskQueue(setTimeout) (2) 대기-> 메인에 있는 함수 test(4) 호출 -> await 함수 promiseFunc(3) 호출 
+        // -> await 아래에 있는 콘솔(5) => MicroTask(promise/ await) 에서 (5) 대기 중 
+        // -> main (6)  -> 2순위인 MicroTask에 있는 대기중인 작업 (5) 출력 -> 다음 순위 TaskQueue (2) 출력.
+
+    </script>
+
+</body>
+
+</html>

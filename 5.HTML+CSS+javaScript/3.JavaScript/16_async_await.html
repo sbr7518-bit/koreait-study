@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비동기2</title>
+</head>
+<body>
+    <script>
+        
+        function getUserData() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const userData  = {name: "홍길동", age: 25};
+                    resolve(userData);
+                }, 1000);
+            })
+        }
+
+        function getUserPosts(user) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const postList  = ["게시글1", "게시글2"];
+                    resolve(postList);
+                }, 1000);
+            })
+        }
+
+        function getPostComments(post) {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const commentList  = ["댓글1", "댓글2"];
+                    resolve(commentList);
+                }, 1000);
+            })
+        }
+        
+        async function fetchData() {
+            try {
+                // await => 무조건 resolve에 있는 함수를 호출 해줘야 한다. 
+                const user = await getUserData();
+                console.log("첫번째 함수 호출 종료")
+                
+                const posts = await getUserPosts(user);
+                console.log("두번째 함수 호출 종료")
+                
+                const comment = await getPostComments(posts);
+                console.log("세번째 함수 호출 종료")
+                
+            } catch(error) {
+                console.error(error);
+            }
+        }
+        
+        fetchData();
+        
+        </script>
+    </body>
+    </html>
