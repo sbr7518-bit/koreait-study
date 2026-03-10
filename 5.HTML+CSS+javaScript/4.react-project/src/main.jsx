@@ -1,5 +1,8 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { QueryClientProvider } from '@tanstack/react-query'
+import { QueryConfig } from './config/QueryConfig.js'
+
 import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import './index.css'
 import App from './App.jsx'
@@ -25,6 +28,16 @@ import State from './papes/10_State.jsx'
 import UseState from './papes/11_UseState.jsx'
 import FormHandling from './papes/12_FormHandling.jsx'
 import Lifting from './papes/13_Lifting.jsx'
+import ThemeToggle from './papes/15_ThemeToggle.jsx'
+import NameInput from './papes/16_NameInput.jsx'
+import OtherPage from './papes/17_OtherPage.jsx'
+import VisitCount from './papes/17_VisitCount.jsx'
+import Toast from './papes/18_Toast.jsx'
+import Gugudan from './papes/Training/Q10_Gugudan.jsx'
+import Dropdown from './papes/19_Dropdown.jsx'
+import NumberList from './papes/20_NumberList.jsx'
+import GetUsers from './papes/21_GetUsers.jsx'
+import GetUsers2 from './papes/22_GetUsers.jsx'
 
 
 const router = createBrowserRouter([
@@ -115,11 +128,56 @@ const router = createBrowserRouter([
   {
     path:"/13",
     element: <Lifting />
-  }  
+  },
+  {
+    path:"/15",
+    element: <ThemeToggle />
+  },
+  {
+    path:"/16",
+    element: <NameInput />
+  },
+  {
+    path:"/17",
+    element: <VisitCount />
+  },
+  {
+    path:"/17_Other",
+    element: <OtherPage />
+  },
+  {
+    path:"/18",
+    element: <Toast />
+  },
+  {
+    path:"/Q10",
+    element: <Gugudan />
+  },
+  {
+    path:"/19",
+    element: <Dropdown />
+  },
+  {
+    path:"/20",
+    element: <NumberList />
+  },
+  {
+    path:"/21",
+    element: <GetUsers />
+  },
+  {
+    path:"/22",
+    element: <GetUsers2 />
+  }   
+
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+
+    <QueryClientProvider client={QueryConfig}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+
   </StrictMode>,
 )
