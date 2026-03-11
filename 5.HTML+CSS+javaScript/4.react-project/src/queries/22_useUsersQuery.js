@@ -10,8 +10,7 @@ export default function useUsersQuery(enabled) {
         select: (data) => {   // 응답 받은 데이터 후처리
             return data.map((user) => ({
                 id: user.id,
-                name: user.name.toUpperCase()  // toUpperCase() => 대문자 변환 함수
-                
+                name: user.name.toUpperCase()  // toUpperCase() => 대문자 변환 함수               
             }))
         }
     })

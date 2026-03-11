@@ -1,0 +1,22 @@
+import { useMutation } from '@tanstack/react-query';
+import { useNavigate } from "react-router-dom"
+import { loginMemberApi } from "../api/memberApi.js";
+
+
+
+export const useLoginMemberMutation = () => {
+    const navigate = useNavigate();
+
+
+    return useMutation({
+        mutationFn: loginMemberApi,
+        onSuccess: (data) => {
+            alert("로그인되었습니다.")
+            navigate('/')
+        },
+        onError: (error) => {
+            alert("로그인 요청 중 오류가 발생했습니다.")
+        }
+    })
+}
+

@@ -11,4 +11,4 @@ export const getUser = async () => {
     } catch(err) {
         console.error("통신 실패 : ", err);
     }
-} 
+}  
