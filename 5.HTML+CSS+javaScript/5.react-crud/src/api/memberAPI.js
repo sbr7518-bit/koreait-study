@@ -1,4 +1,6 @@
-import axiosInstance from "./axiosInstance"
+import axiosInstance from "./axiosInstance";
+
+//  ** 도메인 위주 : 기능별로 있는 애들을 묶어 사용자에게 보여주는 js**
 
 
 // 회원가입
@@ -21,6 +23,15 @@ export const loginMemberApi = async(loginData) => {
         password: loginData.password
     }, {
         withCredentials: true  // 세션 쿠키 포함하기 위해서 필요함.
+    })
+    
+    return response.data;
+}
+
+// 로그아웃
+export const logoutMemberApi = async() => {
+    const response = await axiosInstance.get('/api/member/logout',{
+        withCredentials: true
     })
     
     return response.data;
