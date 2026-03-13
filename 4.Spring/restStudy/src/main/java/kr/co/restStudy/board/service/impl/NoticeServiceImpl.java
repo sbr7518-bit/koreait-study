@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.transaction.Transactional;
 import kr.co.restStudy.board.dto.ReqBoardDTO;
@@ -28,7 +29,7 @@ public class NoticeServiceImpl implements BoardService {
 		private final MemberRepository memberRepository;
 		
 		@Override
-		public void write(ReqBoardDTO request, Long writerId) {
+		public void write(ReqBoardDTO request, List<MultipartFile> files, Long writerId) {
 			// 1. 작성자 조회
 			Member write = memberRepository.findById(writerId).orElse(null);
 			// > .orElse : 결과가 없으면 null 로 처리하겠다.
@@ -138,7 +139,7 @@ public class NoticeServiceImpl implements BoardService {
 		
 		@Override
 		@Transactional
-		public void edit(ReqBoardDTO request, Long id) {
+		public void edit(ReqBoardDTO request, List<MultipartFile> files, Long id) {
 			
 			// 1. 기존 게시글이 존재하는지 조회
 			Board board = boardRepository.findById(request.getId()).orElse(null);
@@ -166,7 +167,7 @@ public class NoticeServiceImpl implements BoardService {
 			
 			// 2. 해당하는 게시글이 존재하는지 확인 및 작성자 검증
 			if(board != null) {
-			   System.out.println("삭제할 수 없습니다.");
+			   System.out.println("삭제할 수 없습니다."); 
 			} else if (!board.getWriter().getId().equals(loginUserId)) {
 			   System.out.println("삭제 권한이 없습니다.");
 			}

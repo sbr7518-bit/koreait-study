@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import { useNoticeListHook } from "../hooks/useNoticeListHook";
 import useUserStore from "../store/userStore";
@@ -44,12 +45,11 @@ function NoticeList() {
           >
             <h1>공지사항</h1>
             {/* 글쓰기 버튼 추가 */}
-            {isLogin && <a
-              href="announcement-write.html"
+            {isLogin && <Link to="/notice/write"
               className="btn btn-primary"
               style={{ textDecoration: "none" }}>
               글쓰기
-            </a>
+            </Link>
             }
           </div>
 
@@ -75,12 +75,11 @@ function NoticeList() {
           >
             <h1>공지사항</h1>
             {/* 글쓰기 버튼 추가 */}
-            {isLogin && <a
-              href="announcement-write.html"
+            {isLogin && <Link to="/notice/write"
               className="btn btn-primary"
               style={{ textDecoration: "none" }}>
               글쓰기
-            </a>
+            </Link>
             }
           </div>
 
@@ -89,6 +88,14 @@ function NoticeList() {
       </>
     )
   }
+
+  const stripHTML = (html) => {
+    if (!html) return '';
+    // 태그 제거
+    const text = html.replace(/<[^>]*>?/gm, '');
+    // 50자가 넘으면 자르기
+    return text.length > 50 ? text.substring(0, 50) + '...' : text;
+  };
 
   // 정상적인 UI 렌더링
   return (
@@ -105,12 +112,11 @@ function NoticeList() {
         >
           <h1>공지사항</h1>
           {/* 글쓰기 버튼 추가 */}
-          {isLogin && <a
-            href="announcement-write.html"
+          {isLogin && <Link to="/notice/write"
             className="btn btn-primary"
             style={{ textDecoration: "none" }}>
             글쓰기
-          </a>
+          </Link>
           }
         </div>
 
@@ -127,7 +133,7 @@ function NoticeList() {
                   <div>
                     <div className="post-title">{post.title}</div>
                     <div className="post-content">
-                      {post.content}
+                      {stripHTML(post.content)}
                     </div>
                   </div>
                   <span className="badge">{post.category}</span>

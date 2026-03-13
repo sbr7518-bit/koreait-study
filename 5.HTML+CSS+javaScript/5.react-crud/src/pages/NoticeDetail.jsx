@@ -100,15 +100,15 @@ function NoticeDetail() {
             {data?.files?.length > 0 && (
               <div id="detailImage" style={{ margin: "2rem 0" }}>
                 <img
-                  stc={`http://localhost:8080${data.files[0].filePath}`}
+                  src={`http://localhost:8080${data.files[0].filePath}`}
                   style={{ width: 200, height: 200 }}
                 ></img>
               </div>
             )}
 
-            <div id="detailContent" className="detail-content">
-              {/* 상세 내용 */}
-              {data.content}
+            <div id="detailContent"
+              className="detail-content ql-editor"
+              dangerouslySetInnerHTML={{ __html: data.content || "" }}>
             </div>
           </div>
           {/* 댓글 섹션 */}
@@ -148,8 +148,8 @@ function NoticeDetail() {
                 >
                   삭제
                 </button>
-                <button 
-                  className="btn btn-secondary" 
+                <button
+                  className="btn btn-secondary"
                   onClick={closeDeleteModel}>
                   취소
                 </button>
