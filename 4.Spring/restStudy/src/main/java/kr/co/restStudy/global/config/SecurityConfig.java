@@ -39,8 +39,8 @@ public class SecurityConfig {
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();
 		
-		config.setAllowedOrigins(List.of("http://localhost"));
-		config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE"));
+		config.setAllowedOrigins(List.of("https://d59b76tlbmdxy.cloudfront.net"));
+		config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
 		config.setAllowedHeaders(List.of("*"));
 		config.setAllowCredentials(true); // 세션, 쿠키 전달 허용
 		

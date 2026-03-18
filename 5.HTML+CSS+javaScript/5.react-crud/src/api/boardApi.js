@@ -1,5 +1,6 @@
 import axiosInstance from "./axiosInstance"
 
+
 export const noticeListApi = async (page = 1) => {
     const response = await axiosInstance.get("/api/board/notice", {
         params: {
