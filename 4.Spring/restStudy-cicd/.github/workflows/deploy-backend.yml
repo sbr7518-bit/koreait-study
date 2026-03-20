@@ -1,0 +1,49 @@
+name: Spring Boot Deploy via SSM
+
+on:
+  push:
+    branches: [ "master" ] 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      # 1. 소스 코드 가져오기
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. AWS 인증 (OIDC 방식)
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.OIDC_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      # 3. 빌드 (JAR 파일 생성)
+      - name: Build JAR
+        run: |
+          chmod +x gradlew
+          ./gradlew clean build -x test
+
+      # 4. S3에 JAR 업로드
+      - name: Upload JAR to S3
+        run: |
+          JAR_FILE=$(ls build/libs/*.jar | grep -v plain)
+          aws s3 cp "$JAR_FILE" s3://${{ secrets.BACKEND_BUCKET }}/app.jar
+
+      # 5. SSM을 통해 EC2에 배포 명령 전달
+      - name: Deploy via SSM
+        run: |
+          aws ssm send-command \
+            --instance-ids ${{ secrets.EC2_INSTANCE_ID }} \
+            --document-name "AWS-RunShellScript" \
+            --parameters commands='[
+              "aws s3 cp s3://${{ secrets.BACKEND_BUCKET }}/app.jar /home/ec2-user/app/app.jar",
+              "bash /home/ec2-user/app/deploy.sh"
+            ]'
+
+
+            
