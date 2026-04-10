@@ -1,0 +1,36 @@
+package kr.co.training;
+
+public class Ex23_Main {
+
+	public static void main(String[] args) {
+		
+		
+		//	1. Farm 객체 생성.
+		Ex23_1_Farm farm = new Ex23_1_Farm();
+		//	2. Pig 객체 생성.
+		EX23_1_Pig pig = new EX23_1_Pig();
+		//	3. Cow 객체 생성.
+		Ex23_1_Cow cow = new Ex23_1_Cow();
+		//	4. Farm 의 sound() 메서드를 호출하세요.
+		// 	- 2번 호출하며 각각 Pig 와 Cow 객체를 인자로 넘겨주세요.
+		
+//		 <객체지향적 작성>
+//		farm.sound(pig,cow);
+		
+//		 <다형성 작성>
+		farm.sound(pig, "꿀꿀");
+		farm.sound(cow, "음메");
+		
+		System.out.println("==================");
+//		=======================================
+		
+		
+		
+		
+		
+		
+
+
+	}
+
+}

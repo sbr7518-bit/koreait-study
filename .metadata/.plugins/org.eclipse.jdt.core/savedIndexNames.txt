@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\study\koreait-study\.metadata\.plugins\org.eclipse.jdt.core
+914791821.index
+2261702419.index
+1865797976.index

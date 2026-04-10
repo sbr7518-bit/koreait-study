@@ -1,0 +1,15 @@
+package kr.co.training;
+
+public class Ex23_1_Animal {
+	
+//	cry 메서드를 가집니다.
+	
+	pubilc void cry(Sring sound) {
+		
+	}
+	
+	
+	
+	
+
+}

@@ -35,6 +35,7 @@ public class SecurityConfig {
 	// import : org.springframework.web.cors.CorsConfigurationSource
 	// import : org.springframework.web.cors.UrlBasedCorsConfigurationSource
 	// import : java.util.List
+	
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config = new CorsConfiguration();

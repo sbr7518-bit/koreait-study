@@ -1,0 +1,32 @@
+# Pod는 5개 유지
+# nginx-final 이라는  label를 가진 pod 관리
+# pod를 생성할 템플릿 작성
+#   - 이미지는 nginx, 컨테이너 포트는 80
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-final
+
+spec: 
+  replicas: 5
+  selector:
+    matchLabels:
+      app: nginx-final
+
+  template:
+    metadata:
+      labels:
+        app: nginx-final
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          ports:
+          - containerPort: 80
+          command: ["/bin/sh"]
+          args:
+            - -c
+            - |
+              echo "<h1>$(hostname)</h1>" > /usr/share/nginx/html/index.html
+              nginx -g 'daemon off;'

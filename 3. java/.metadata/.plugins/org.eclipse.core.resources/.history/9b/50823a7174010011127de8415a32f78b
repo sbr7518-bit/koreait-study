@@ -1,0 +1,15 @@
+package kr.co.training;
+
+public class Ex23_2_SuperMarket {
+	
+//	- 정수형 MilkCount 필드를 가집니다.
+//		> 접근 제어자 : private
+//	- goSuperMarket 메서드를 가집니다.
+//		>해당 메서드는 Ex23_2_HasAvocado, Ex23_2_NoAvocado 두 객체를
+//		 매개변수로 받습니다. (다형성을 활용하여 1개의 매개변수로 받으세요)
+//		> 매개변수로 받은 객체의 메서드를 호출하세요.
+//			> 호출 결과가 true라면 밀크카운트를 6으로 할당
+//			> 호출 결과가 false라면 밀크카운트를 1으로 할당
+//	- milkCount 필드에 대한 getter를 작성하세요. 
+
+}
