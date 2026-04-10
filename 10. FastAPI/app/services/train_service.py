@@ -95,7 +95,7 @@ class TrainService:
             "final_loss": float(final_loss),
             "weight": float(weight),
             "bias": float(bias),
-            "prediction": float(prediction)
+            "predictions": float(prediction)
         }
 
 
