@@ -1,4 +1,6 @@
 drivers
 3.java/.metadata
 2. Database/.metadata
-2. Database/General/.*\
+2. Database/General/.*
+.env
+**/.env

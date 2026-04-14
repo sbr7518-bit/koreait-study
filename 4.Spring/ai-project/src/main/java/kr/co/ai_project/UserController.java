@@ -1,0 +1,29 @@
+package kr.co.ai_project;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import jakarta.servlet.http.HttpSession;
+import lombok.RequiredArgsConstructor;
+
+@Controller
+@RequestMapping("/ai")
+@RequiredArgsConstructor
+public class UserController {
+	private final UserService userService;
+	
+	@GetMapping("/login")
+	public ResponseEntity<?> login(UserDto.RequestLogin req, HttpSession session) {
+		UserDto.ResponseLogin response = userService.login(req);
+		
+		if(response==null) {
+			return ResponseEntity.status(401).build();
+		}
+		
+		session.setAttribute("LOGIN_USER", response);
+		return ResponseEntity.ok(response);
+	}
+	
+}
